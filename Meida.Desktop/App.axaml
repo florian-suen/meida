@@ -1,0 +1,18 @@
+<Application xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:sukiUi="clr-namespace:SukiUI;assembly=SukiUI"
+             x:Class="Meida.Desktop.App"
+             xmlns:local="using:Meida.Desktop"
+
+             RequestedThemeVariant="Dark">
+    <!-- "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options. -->
+
+    <Application.DataTemplates>
+        <local:ViewLocator />
+    </Application.DataTemplates>
+
+    <Application.Styles>
+        <StyleInclude Source="avares://SukiUI.Dock/Index.axaml" />
+        <sukiUi:SukiTheme ThemeColor="Red" />
+    </Application.Styles>
+</Application>

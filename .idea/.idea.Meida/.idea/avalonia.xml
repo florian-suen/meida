@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AvaloniaProject">
+    <option name="projectPerEditor">
+      <map>
+        <entry key="Meida.Desktop/App.axaml" value="Meida.Desktop/Meida.Desktop.csproj" />
+        <entry key="Meida.Desktop/Views/MainWindow.axaml" value="Meida.Desktop/Meida.Desktop.csproj" />
+        <entry key="MeidaCore/App.axaml" value="MeidaCore/MeidaCore.csproj" />
+        <entry key="MeidaCore/Views/MainWindow.axaml" value="MeidaCore/MeidaCore.csproj" />
+      </map>
+    </option>
+  </component>
+</project>
