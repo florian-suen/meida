@@ -1,0 +1,19 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             xmlns:vm="using:Meida.Desktop.ViewModels"
+             x:Class="Meida.Desktop.Views.SettingsView"
+             x:DataType="vm:SettingsViewModel">
+    <ScrollViewer Margin="20">
+        <StackPanel Spacing="20" MaxWidth="600" HorizontalAlignment="Left">
+            <TextBlock Text="Application Settings" FontSize="24" FontWeight="Bold" />
+            <TextBlock Text="Enable Shiba Mode" FontSize="16" />
+            <ToggleButton Content="Enabled" IsChecked="{Binding Option1Enabled}"
+                          HorizontalAlignment="Left" />
+            <TextBlock Text="Adjust Value" FontSize="16" />
+            <Slider Minimum="0" Maximum="100" Value="{Binding Option2Value}" />
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

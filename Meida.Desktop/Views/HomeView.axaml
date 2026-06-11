@@ -1,0 +1,101 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             xmlns:vm="using:Meida.Desktop.ViewModels"
+             x:DataType="vm:HomeViewModel"
+             x:Class="Meida.Desktop.Views.HomeView">
+    <Grid ColumnSpacing="10" RowSpacing="10" ColumnDefinitions="*,*" RowDefinitions="*,*"
+          Margin="15,0,15,10">
+
+        <Grid.Styles>
+            <Style Selector="Border.FeatureCard">
+                <Setter Property="CornerRadius" Value="20" />
+                <Setter Property="BorderThickness" Value="1" />
+                <Setter Property="BorderBrush" Value="{DynamicResource SukiBorderBrush}" />
+                <Setter Property="Background" Value="{DynamicResource SukiCardBackground}" />
+                <Setter Property="Cursor" Value="Hand" />
+                <Setter Property="ClipToBounds" Value="True" />
+                <Setter Property="HorizontalAlignment" Value="Stretch" />
+                <Setter Property="VerticalAlignment" Value="Stretch" />
+            </Style>
+        </Grid.Styles>
+
+        <Button Command="{Binding GoToChordsCommand}" Grid.Column="0" Grid.Row="0" BorderThickness="0" Padding="0"
+                HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
+            <Button.Background>
+                <ImageBrush Source="avares://Meida.Desktop/Assets/chords_bg.jpg"
+                            Stretch="UniformToFill" Opacity="0.5" />
+            </Button.Background>
+            <Grid>
+
+                <Border Opacity="0.4" />
+                <TextBlock Text="CHORDS" FontSize="64" FontWeight="Bold"
+                           Foreground="{DynamicResource SukiForeground}"
+                           VerticalAlignment="Center" />
+            </Grid>
+        </Button>
+
+
+        <Button Command="{Binding GoToScalesCommand}" Grid.Column="1" Grid.Row="0" BorderThickness="0" Padding="0"
+                HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
+            <Button.Background>
+                <ImageBrush Source="avares://Meida.Desktop/Assets/scales.jpg"
+                            Stretch="UniformToFill" Opacity="0.5" />
+            </Button.Background>
+            <Grid>
+                <Border Opacity="0.4" />
+                <TextBlock Text="SCALES" FontSize="64" FontWeight="Bold"
+                           Foreground="{DynamicResource SukiForeground}"
+                           VerticalAlignment="Center" />
+            </Grid>
+        </Button>
+        <Button
+            Command="{Binding GoToVideosCommand}"
+            Grid.Column="0" Grid.Row="1"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Stretch"
+            BorderThickness="0" Padding="0">
+
+            <Button.Background>
+                <ImageBrush Source="avares://Meida.Desktop/Assets/video_bg.jpg"
+                            Stretch="UniformToFill"
+                            Opacity="0.5" />
+            </Button.Background>
+            <Grid>
+                <Border Opacity="0.4" />
+                <TextBlock Text="VIDEOS" FontSize="56" FontWeight="Bold"
+                           Foreground="{DynamicResource SukiForeground}"
+                           HorizontalAlignment="Center" VerticalAlignment="Center" />
+            </Grid>
+
+        </Button>
+        <Button Command="{Binding GoToSongsCommand}"
+                Grid.Column="1" Grid.Row="1"
+                BorderThickness="0"
+                Padding="0"
+                Margin="0"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch"
+                HorizontalContentAlignment="Center"
+                VerticalContentAlignment="Center">
+            <Button.Background>
+                <ImageBrush Source="avares://Meida.Desktop/Assets/songs_bg.jpg"
+                            Stretch="UniformToFill"
+                            Opacity="0.5" />
+            </Button.Background>
+
+            <Grid ColumnDefinitions="*" RowDefinitions="*" HorizontalAlignment="Center"
+                  VerticalAlignment="Center">
+                <Border Opacity="0.4"
+                        HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+                <TextBlock Text="SONGS" FontSize="64" FontWeight="Bold"
+                           Foreground="{DynamicResource SukiForeground}"
+                           HorizontalAlignment="Center" VerticalAlignment="Center" />
+            </Grid>
+        </Button>
+    </Grid>
+</UserControl>

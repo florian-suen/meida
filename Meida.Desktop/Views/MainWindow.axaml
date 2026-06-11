@@ -1,8 +1,9 @@
 <sukiUi:SukiWindow
+    Padding="0"
+    ShowBottomBorder="False"
     RootCornerRadius="20"
     CornerRadius="15"
     IsMenuVisible="False"
-
     BackgroundStyle="Bubble"
     xmlns="https://github.com/avaloniaui"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -16,237 +17,101 @@
     WindowDecorations="None"
     ExtendClientAreaToDecorationsHint="True"
     TransparencyBackgroundFallback="{DynamicResource SukiBackgroundSolid}"
+    BorderBrush="#6DFF18"
     WindowStartupLocation="CenterScreen">
 
-   
-    <Grid RowDefinitions="40,*" Margin="10">
-        <StackPanel Grid.Row="0" Spacing="5" Orientation="Horizontal" HorizontalAlignment="Right" Margin="16,0"
-                    VerticalAlignment="Center">
-            <Button Padding="15" BorderThickness="0" Cursor="Hand" Background="Transparent">
-                <Svg Path="/Assets/metronome.svg" Width="20" Height="20" HorizontalAlignment="Center" />
-            </Button>
-            <Separator Height="20" Width="1" /> <!-- Changed NaN to 20 -->
-            <Button Padding="15,0" Background="#A83A5C" BorderBrush="#7C303F" BorderThickness="1" Cursor="Hand">
-                <materialIcons:MaterialIcon Kind="Abacus" Width="20" />
-            </Button>
-        </StackPanel>
+    <Border BorderThickness="0,1,0,0" BorderBrush="#382738" Padding="0,10,0,0">
+        <Grid RowDefinitions="50,*">
+            <StackPanel Grid.Row="0" Spacing="5" Orientation="Horizontal" HorizontalAlignment="Right"
+                        Margin="0,0,16,10"
+                        VerticalAlignment="Center">
+                <Button Padding="15" BorderThickness="0" Cursor="Hand" Background="Transparent">
+                    <Svg Path="/Assets/metronome.svg" Width="20" Height="20" HorizontalAlignment="Center" />
+                </Button>
+                <Separator Height="20" Width="1" /> <!-- Changed NaN to 20 -->
+                <Button Padding="15,0" Background="#A83A5C" BorderBrush="#7C303F" BorderThickness="1" Cursor="Hand">
+                    <materialIcons:MaterialIcon Kind="Abacus" Width="20" />
+                </Button>
+            </StackPanel>
 
-        <Border Grid.Row="1"
-                CornerRadius="20 ,0,0,20"
-                ClipToBounds="True"
-                BoxShadow="0 4 15 0 #40000000">
-            <sukiUi:SukiSideMenu ClipToBounds="True" IsSearchEnabled="True">
+            <Border Grid.Row="1"
+                    CornerRadius="20 ,0,0,20"
+                    ClipToBounds="True"
+                    BoxShadow="0 4 15 0 #40000000">
+                <sukiUi:SukiSideMenu SidebarToggleEnabled="True" ClipToBounds="True"
+                                     IsSearchEnabled="True">
+                    <sukiUi:SukiSideMenu.Items>
+                        <sukiUi:SukiSideMenuItem IsSelected="{Binding IsHomeActive, Mode=TwoWay}" Header="Home">
+                            <sukiUi:SukiSideMenuItem.Icon>
+                                <materialIcons:MaterialIcon Kind="Home" Width="24" />
+                            </sukiUi:SukiSideMenuItem.Icon>
+                            <sukiUi:SukiSideMenuItem.PageContent>
+                                <ContentControl Content="{Binding HomeViewModel}" />
+                            </sukiUi:SukiSideMenuItem.PageContent>
+                        </sukiUi:SukiSideMenuItem>
+                        <sukiUi:SukiSideMenuItem IsSelected="{Binding IsChordsActive}" Header="Chords">
+                            <sukiUi:SukiSideMenuItem.Icon>
+                                <materialIcons:MaterialIcon Kind="MusicNote" Width="24" />
+                            </sukiUi:SukiSideMenuItem.Icon>
 
-                <sukiUi:SukiSideMenu.Items>
-                    <sukiUi:SukiSideMenuItem Header="Home" Classes="Compact">
-                        <sukiUi:SukiSideMenuItem.Icon>
-                            <materialIcons:MaterialIcon Kind="Home" Width="24" />
-                        </sukiUi:SukiSideMenuItem.Icon>
+                            <sukiUi:SukiSideMenuItem.PageContent>
 
-
-                        <sukiUi:SukiSideMenuItem.PageContent>
-                            <Grid ColumnSpacing="10" RowSpacing="10" ColumnDefinitions="*,*" RowDefinitions="*,*"
-                                  Margin="15">
-
-                                <Grid.Styles>
-                                    <Style Selector="Border.FeatureCard">
-                                        <Setter Property="CornerRadius" Value="20" />
-                                        <Setter Property="BorderThickness" Value="1" />
-                                        <Setter Property="BorderBrush" Value="{DynamicResource SukiBorderBrush}" />
-                                        <Setter Property="Background" Value="{DynamicResource SukiCardBackground}" />
-                                        <Setter Property="Cursor" Value="Hand" />
-                                        <Setter Property="ClipToBounds" Value="True" />
-                                        <Setter Property="HorizontalAlignment" Value="Stretch" />
-                                        <Setter Property="VerticalAlignment" Value="Stretch" />
-                                    </Style>
-                                </Grid.Styles>
-
-                                <Button Grid.Column="0" Grid.Row="0" BorderThickness="0" Padding="0"
-                                        HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
-                                        HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
-                                    <Button.Background>
-                                        <ImageBrush Source="avares://Meida.Desktop/Assets/chords_bg.jpg"
-                                                    Stretch="UniformToFill" Opacity="0.5" />
-                                    </Button.Background>
-                                    <Grid>
-
-                                        <Border Opacity="0.4" />
-                                        <TextBlock Text="CHORDS" FontSize="64" FontWeight="Bold"
-                                                   Foreground="{DynamicResource SukiForeground}"
-                                                   VerticalAlignment="Center" />
-                                    </Grid>
-                                </Button>
+                                <ContentControl Content="{Binding ChordsViewModel}" />
 
 
-                                <Button Grid.Column="1" Grid.Row="0" BorderThickness="0" Padding="0"
-                                        HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
-                                        HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
-                                    <Button.Background>
-                                        <ImageBrush Source="avares://Meida.Desktop/Assets/scales.jpg"
-                                                    Stretch="UniformToFill" Opacity="0.5" />
-                                    </Button.Background>
-                                    <Grid>
-                                        <Border Opacity="0.4" />
-                                        <TextBlock Text="SCALES" FontSize="64" FontWeight="Bold"
-                                                   Foreground="{DynamicResource SukiForeground}"
-                                                   VerticalAlignment="Center" />
-                                    </Grid>
-                                </Button>
-                                <Button Grid.Column="0" Grid.Row="1"
-                                        HorizontalAlignment="Stretch"
-                                        VerticalAlignment="Stretch"
-                                        BorderThickness="0" Padding="0">
+                            </sukiUi:SukiSideMenuItem.PageContent>
+                        </sukiUi:SukiSideMenuItem>
 
-                                    <Button.Background>
-                                        <ImageBrush Source="avares://Meida.Desktop/Assets/video_bg.jpg"
-                                                    Stretch="UniformToFill"
-                                                    Opacity="0.5" />
-                                    </Button.Background>
-                                    <Grid>
-                                        <Border Opacity="0.4" />
-                                        <TextBlock Text="VIDEOS" FontSize="56" FontWeight="Bold"
-                                                   Foreground="{DynamicResource SukiForeground}"
-                                                   HorizontalAlignment="Center" VerticalAlignment="Center" />
-                                    </Grid>
-
-                                </Button>
-                                <Button Grid.Column="1" Grid.Row="1"
-                                        BorderThickness="0"
-                                        Padding="0"
-                                        Margin="0"
-                                        HorizontalAlignment="Stretch"
-                                        VerticalAlignment="Stretch"
-                                        HorizontalContentAlignment="Center"
-                                        VerticalContentAlignment="Center">
-                                    <Button.Background>
-                                        <ImageBrush Source="avares://Meida.Desktop/Assets/songs_bg.jpg"
-                                                    Stretch="UniformToFill"
-                                                    Opacity="0.5" />
-                                    </Button.Background>
-
-                                    <Grid ColumnDefinitions="*" RowDefinitions="*" HorizontalAlignment="Center"
-                                          VerticalAlignment="Center">
-                                        <Border Opacity="0.4"
-                                                HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
-                                        <TextBlock Text="SONGS" FontSize="64" FontWeight="Bold"
-                                                   Foreground="{DynamicResource SukiForeground}"
-                                                   HorizontalAlignment="Center" VerticalAlignment="Center" />
-                                    </Grid>
-                                </Button>
-                            </Grid>
-                        </sukiUi:SukiSideMenuItem.PageContent>
-                    </sukiUi:SukiSideMenuItem>
-
-                    <sukiUi:SukiSideMenuItem Header="Chords" Classes="Compact">
-                        <sukiUi:SukiSideMenuItem.Icon>
-                            <materialIcons:MaterialIcon Kind="MusicNote" Width="24" />
-                        </sukiUi:SukiSideMenuItem.Icon>
-                        <sukiUi:SukiSideMenuItem.PageContent>
-
-                            <ScrollViewer Margin="20">
-                                <StackPanel Spacing="20" MaxWidth="600" HorizontalAlignment="Left">
-                                    <TextBlock Text="Application Settings" FontSize="24" FontWeight="Bold" />
-                                    <TextBlock Text="Enable Shiba Mode" FontSize="16" />
-                                    <ToggleButton Content="Enabled" IsChecked="{Binding Option1Enabled}"
-                                                  HorizontalAlignment="Left" />
-                                    <TextBlock Text="Adjust Value" FontSize="16" />
-                                    <Slider Minimum="0" Maximum="100" Value="{Binding Option2Value}" />
-                                </StackPanel>
-                            </ScrollViewer>
-                        </sukiUi:SukiSideMenuItem.PageContent>
-                    </sukiUi:SukiSideMenuItem>
-
-                    <sukiUi:SukiSideMenuItem Header="Scales" Classes="Compact">
-                        <sukiUi:SukiSideMenuItem.Icon>
-                            <materialIcons:MaterialIcon Kind="MusicAccidentalFlat" Width="24" />
-                        </sukiUi:SukiSideMenuItem.Icon>
-                        <sukiUi:SukiSideMenuItem.PageContent>
-
-                            <ScrollViewer Margin="20">
-                                <StackPanel Spacing="20" MaxWidth="600" HorizontalAlignment="Left">
-                                    <TextBlock Text="Application Settings" FontSize="24" FontWeight="Bold" />
-                                    <TextBlock Text="Enable Shiba Mode" FontSize="16" />
-                                    <ToggleButton Content="Enabled" IsChecked="{Binding Option1Enabled}"
-                                                  HorizontalAlignment="Left" />
-                                    <TextBlock Text="Adjust Value" FontSize="16" />
-                                    <Slider Minimum="0" Maximum="100" Value="{Binding Option2Value}" />
-                                </StackPanel>
-                            </ScrollViewer>
-                        </sukiUi:SukiSideMenuItem.PageContent>
-                    </sukiUi:SukiSideMenuItem>
-
-                    <sukiUi:SukiSideMenuItem Header="Videos" Classes="Compact">
-                        <sukiUi:SukiSideMenuItem.Icon>
-                            <materialIcons:MaterialIcon Kind="VideoBox" Width="24" />
-                        </sukiUi:SukiSideMenuItem.Icon>
-                        <sukiUi:SukiSideMenuItem.PageContent>
-
-                            <ScrollViewer Margin="20">
-                                <StackPanel Spacing="20" MaxWidth="600" HorizontalAlignment="Left">
-                                    <TextBlock Text="Application Settings" FontSize="24" FontWeight="Bold" />
-                                    <TextBlock Text="Enable Shiba Mode" FontSize="16" />
-                                    <ToggleButton Content="Enabled" IsChecked="{Binding Option1Enabled}"
-                                                  HorizontalAlignment="Left" />
-                                    <TextBlock Text="Adjust Value" FontSize="16" />
-                                    <Slider Minimum="0" Maximum="100" Value="{Binding Option2Value}" />
-                                </StackPanel>
-                            </ScrollViewer>
-                        </sukiUi:SukiSideMenuItem.PageContent>
-                    </sukiUi:SukiSideMenuItem>
-
-                    <sukiUi:SukiSideMenuItem Header="Songs" Classes="Compact">
-                        <sukiUi:SukiSideMenuItem.Icon>
-                            <materialIcons:MaterialIcon Kind="BoxMusic" Width="24" />
-                        </sukiUi:SukiSideMenuItem.Icon>
-                        <sukiUi:SukiSideMenuItem.PageContent>
-
-                            <ScrollViewer Margin="20">
-                                <StackPanel Spacing="20" MaxWidth="600" HorizontalAlignment="Left">
-                                    <TextBlock Text="Application Settings" FontSize="24" FontWeight="Bold" />
-                                    <TextBlock Text="Enable Feature X" FontSize="16" />
-                                    <ToggleButton Content="Enabled" IsChecked="{Binding Option1Enabled}"
-                                                  HorizontalAlignment="Left" />
-                                    <TextBlock Text="Adjust Value" FontSize="16" />
-                                    <Slider Minimum="0" Maximum="100" Value="{Binding Option2Value}" />
-                                </StackPanel>
-                            </ScrollViewer>
-                        </sukiUi:SukiSideMenuItem.PageContent>
-                    </sukiUi:SukiSideMenuItem>
+                        <sukiUi:SukiSideMenuItem IsSelected="{Binding IsScalesActive}" Header="Scales">
+                            <sukiUi:SukiSideMenuItem.Icon>
+                                <materialIcons:MaterialIcon Kind="MusicAccidentalFlat" Width="24" />
+                            </sukiUi:SukiSideMenuItem.Icon>
+                            <sukiUi:SukiSideMenuItem.PageContent>
+                                <ContentControl Content="{Binding ScalesViewModel}" />
+                            </sukiUi:SukiSideMenuItem.PageContent>
+                        </sukiUi:SukiSideMenuItem>
+                        <sukiUi:SukiSideMenuItem IsSelected="{Binding IsVideosActive}" Header="Videos">
+                            <sukiUi:SukiSideMenuItem.Icon>
+                                <materialIcons:MaterialIcon Kind="VideoBox" Width="24" />
+                            </sukiUi:SukiSideMenuItem.Icon>
+                            <sukiUi:SukiSideMenuItem.PageContent>
+                                <ContentControl Content="{Binding VideosViewModel}" />
+                            </sukiUi:SukiSideMenuItem.PageContent>
+                        </sukiUi:SukiSideMenuItem>
+                        <sukiUi:SukiSideMenuItem IsSelected="{Binding IsSongsActive}" Header="Songs">
+                            <sukiUi:SukiSideMenuItem.Icon>
+                                <materialIcons:MaterialIcon Kind="BoxMusic" Width="24" />
+                            </sukiUi:SukiSideMenuItem.Icon>
+                            <sukiUi:SukiSideMenuItem.PageContent>
+                                <ContentControl Content="{Binding SongsViewModel}" />
+                            </sukiUi:SukiSideMenuItem.PageContent>
+                        </sukiUi:SukiSideMenuItem>
 
 
-                    <sukiUi:SukiSideMenuItem Header="Settings" Classes="Compact">
-                        <sukiUi:SukiSideMenuItem.Icon>
-                            <materialIcons:MaterialIcon Kind="Settings" Width="24" />
-                        </sukiUi:SukiSideMenuItem.Icon>
-                        <sukiUi:SukiSideMenuItem.PageContent>
+                        <sukiUi:SukiSideMenuItem Header="Settings">
+                            <sukiUi:SukiSideMenuItem.Icon>
+                                <materialIcons:MaterialIcon Kind="Settings" Width="24" />
+                            </sukiUi:SukiSideMenuItem.Icon>
+                            <sukiUi:SukiSideMenuItem.PageContent>
+                                <ContentControl Content="{Binding SettingsViewModel}" />
+                            </sukiUi:SukiSideMenuItem.PageContent>
+                        </sukiUi:SukiSideMenuItem>
 
-                            <ScrollViewer Margin="20">
-                                <StackPanel Spacing="20" MaxWidth="600" HorizontalAlignment="Left">
-                                    <TextBlock Text="Application Settings" FontSize="24" FontWeight="Bold" />
-                                    <TextBlock Text="Enable Shiba Mode" FontSize="16" />
-                                    <ToggleButton Content="Enabled" IsChecked="{Binding Option1Enabled}"
-                                                  HorizontalAlignment="Left" />
-                                    <TextBlock Text="Adjust Value" FontSize="16" />
-                                    <Slider Minimum="0" Maximum="100" Value="{Binding Option2Value}" />
-                                </StackPanel>
-                            </ScrollViewer>
-                        </sukiUi:SukiSideMenuItem.PageContent>
-                    </sukiUi:SukiSideMenuItem>
+                    </sukiUi:SukiSideMenu.Items>
 
-                </sukiUi:SukiSideMenu.Items>
 
-                <!-- Optional Header/Footer for the sidebar -->
-                <sukiUi:SukiSideMenu.HeaderContent>
-                    <StackPanel Orientation="Horizontal" Spacing="10" Margin="30 ,0">
-                        <materialIcons:MaterialIcon Kind="Music" Width="32" Height="32" />
-                        <TextBlock Text="Meida" FontSize="20" FontWeight="Bold" VerticalAlignment="Center" />
-                    </StackPanel>
-                </sukiUi:SukiSideMenu.HeaderContent>
+                    <sukiUi:SukiSideMenu.HeaderContent>
+                        <StackPanel Orientation="Horizontal" Spacing="10" Margin="30 ,0">
+                            <materialIcons:MaterialIcon Kind="Music" Width="32" Height="32" />
+                            <TextBlock Text="Meida" FontSize="20" FontWeight="Bold" VerticalAlignment="Center" />
+                        </StackPanel>
+                    </sukiUi:SukiSideMenu.HeaderContent>
 
-                <sukiUi:SukiSideMenu.FooterContent>
-                    <TextBlock Text="v1.0.0" Margin="21,0" Opacity="0.5" />
-                </sukiUi:SukiSideMenu.FooterContent>
-            </sukiUi:SukiSideMenu>
-        </Border>
-    </Grid>
+                    <sukiUi:SukiSideMenu.FooterContent>
+                        <TextBlock Text="v1.0.0" Margin="21,0" Opacity="0.5" />
+                    </sukiUi:SukiSideMenu.FooterContent>
+                </sukiUi:SukiSideMenu>
+            </Border>
+        </Grid>
+    </Border>
 </sukiUi:SukiWindow>
