@@ -10,10 +10,4 @@ public partial class MainWindow : SukiWindow
         InitializeComponent();
         DataContext = new MainWindowViewModel();
     }
-
-    private void OnWindowLoaded()
-    {
-        if (DataContext is MainWindowViewModel vm)
-            vm.SetActivePageCommand.Execute("Home");
-    }
 }

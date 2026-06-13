@@ -13,6 +13,8 @@
         <entry key="Meida.Desktop/Views/ScalesView.axaml" value="Meida.Desktop/Meida.Desktop.csproj" />
         <entry key="Meida.Desktop/Views/Settings.axaml" value="Meida.Desktop/Meida.Desktop.csproj" />
         <entry key="Meida.Desktop/Views/SettingsView.axaml" value="Meida.Desktop/Meida.Desktop.csproj" />
+        <entry key="Meida.Desktop/Views/SongsView.axaml" value="Meida.Desktop/Meida.Desktop.csproj" />
+        <entry key="Meida.Desktop/Views/VideosView.axaml" value="Meida.Desktop/Meida.Desktop.csproj" />
         <entry key="MeidaCore/App.axaml" value="MeidaCore/MeidaCore.csproj" />
         <entry key="MeidaCore/Views/MainWindow.axaml" value="MeidaCore/MeidaCore.csproj" />
       </map>

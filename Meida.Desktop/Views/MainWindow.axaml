@@ -34,83 +34,51 @@
                 </Button>
             </StackPanel>
 
+
             <Border Grid.Row="1"
                     CornerRadius="20 ,0,0,20"
                     ClipToBounds="True"
                     BoxShadow="0 4 15 0 #40000000">
-                <sukiUi:SukiSideMenu SidebarToggleEnabled="True" ClipToBounds="True"
-                                     IsSearchEnabled="True">
-                    <sukiUi:SukiSideMenu.Items>
-                        <sukiUi:SukiSideMenuItem IsSelected="{Binding IsHomeActive, Mode=TwoWay}" Header="Home">
-                            <sukiUi:SukiSideMenuItem.Icon>
-                                <materialIcons:MaterialIcon Kind="Home" Width="24" />
-                            </sukiUi:SukiSideMenuItem.Icon>
-                            <sukiUi:SukiSideMenuItem.PageContent>
-                                <ContentControl Content="{Binding HomeViewModel}" />
-                            </sukiUi:SukiSideMenuItem.PageContent>
-                        </sukiUi:SukiSideMenuItem>
-                        <sukiUi:SukiSideMenuItem IsSelected="{Binding IsChordsActive}" Header="Chords">
-                            <sukiUi:SukiSideMenuItem.Icon>
-                                <materialIcons:MaterialIcon Kind="MusicNote" Width="24" />
-                            </sukiUi:SukiSideMenuItem.Icon>
-
-                            <sukiUi:SukiSideMenuItem.PageContent>
-
-                                <ContentControl Content="{Binding ChordsViewModel}" />
 
 
-                            </sukiUi:SukiSideMenuItem.PageContent>
-                        </sukiUi:SukiSideMenuItem>
-
-                        <sukiUi:SukiSideMenuItem IsSelected="{Binding IsScalesActive}" Header="Scales">
-                            <sukiUi:SukiSideMenuItem.Icon>
-                                <materialIcons:MaterialIcon Kind="MusicAccidentalFlat" Width="24" />
-                            </sukiUi:SukiSideMenuItem.Icon>
-                            <sukiUi:SukiSideMenuItem.PageContent>
-                                <ContentControl Content="{Binding ScalesViewModel}" />
-                            </sukiUi:SukiSideMenuItem.PageContent>
-                        </sukiUi:SukiSideMenuItem>
-                        <sukiUi:SukiSideMenuItem IsSelected="{Binding IsVideosActive}" Header="Videos">
-                            <sukiUi:SukiSideMenuItem.Icon>
-                                <materialIcons:MaterialIcon Kind="VideoBox" Width="24" />
-                            </sukiUi:SukiSideMenuItem.Icon>
-                            <sukiUi:SukiSideMenuItem.PageContent>
-                                <ContentControl Content="{Binding VideosViewModel}" />
-                            </sukiUi:SukiSideMenuItem.PageContent>
-                        </sukiUi:SukiSideMenuItem>
-                        <sukiUi:SukiSideMenuItem IsSelected="{Binding IsSongsActive}" Header="Songs">
-                            <sukiUi:SukiSideMenuItem.Icon>
-                                <materialIcons:MaterialIcon Kind="BoxMusic" Width="24" />
-                            </sukiUi:SukiSideMenuItem.Icon>
-                            <sukiUi:SukiSideMenuItem.PageContent>
-                                <ContentControl Content="{Binding SongsViewModel}" />
-                            </sukiUi:SukiSideMenuItem.PageContent>
-                        </sukiUi:SukiSideMenuItem>
+                <sukiUi:SukiSideMenu
+                    ItemsSource="{Binding _menuItems, Mode=OneWay}"
+                    SelectedItem="{Binding SelectedMenuItemView, Mode=TwoWay}"
+                    SidebarToggleEnabled="True"
+                    ClipToBounds="True"
+                    IsSearchEnabled="True">
 
 
-                        <sukiUi:SukiSideMenuItem Header="Settings">
-                            <sukiUi:SukiSideMenuItem.Icon>
-                                <materialIcons:MaterialIcon Kind="Settings" Width="24" />
-                            </sukiUi:SukiSideMenuItem.Icon>
-                            <sukiUi:SukiSideMenuItem.PageContent>
-                                <ContentControl Content="{Binding SettingsViewModel}" />
-                            </sukiUi:SukiSideMenuItem.PageContent>
-                        </sukiUi:SukiSideMenuItem>
+                    <sukiUi:SukiSideMenu.ItemTemplate>
 
-                    </sukiUi:SukiSideMenu.Items>
+                        <DataTemplate>
+                            <sukiUi:SukiSideMenuItem PageContent="{Binding PageContent}"
+                                                     Header="{Binding Header  }">
+
+                                <sukiUi:SukiSideMenuItem.Icon>
+                                    <materialIcons:MaterialIcon Kind="{Binding IconKind}" Width="24" />
+                                </sukiUi:SukiSideMenuItem.Icon>
+
+
+                            </sukiUi:SukiSideMenuItem>
+                        </DataTemplate>
+                    </sukiUi:SukiSideMenu.ItemTemplate>
 
 
                     <sukiUi:SukiSideMenu.HeaderContent>
-                        <StackPanel Orientation="Horizontal" Spacing="10" Margin="30 ,0">
+                        <StackPanel Orientation="Horizontal" Spacing="10" Margin="30,0">
                             <materialIcons:MaterialIcon Kind="Music" Width="32" Height="32" />
-                            <TextBlock Text="Meida" FontSize="20" FontWeight="Bold" VerticalAlignment="Center" />
+                            <TextBlock Text="Media" FontSize="20" FontWeight="Bold" VerticalAlignment="Center" />
                         </StackPanel>
                     </sukiUi:SukiSideMenu.HeaderContent>
 
                     <sukiUi:SukiSideMenu.FooterContent>
                         <TextBlock Text="v1.0.0" Margin="21,0" Opacity="0.5" />
                     </sukiUi:SukiSideMenu.FooterContent>
+
                 </sukiUi:SukiSideMenu>
+
+
             </Border>
         </Grid>
     </Border>

@@ -10,7 +10,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Models\" />
     <AvaloniaResource Include="Assets\**" />
   </ItemGroup>
 
@@ -31,5 +30,9 @@
     <PackageReference Include="SukiUI" Version="7.0.2-nightly20260520" />
     <PackageReference Include="SukiUI.Dock" Version="7.0.2-nightly20260520" />
     <PackageReference Include="Svg.Controls.Skia.Avalonia" Version="12.0.0.11" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Models\" />
   </ItemGroup>
 </Project>

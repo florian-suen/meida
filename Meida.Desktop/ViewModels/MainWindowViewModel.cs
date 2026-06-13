@@ -1,27 +1,24 @@
 ﻿using System;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
+using Avalonia.Controls;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using Material.Icons;
+using Meida.Desktop.Views;
+using SukiUI.Controls;
 
 namespace Meida.Desktop.ViewModels;
 
-public partial class MainWindowViewModel : ObservableObject
+public partial class MainWindowViewModel : ViewModelBase
 {
     [ObservableProperty]
     private bool _isChordsActive;
 
     [ObservableProperty]
-    private bool _isHomeActive = true;
-
-    [ObservableProperty]
     private bool _isScalesActive;
-
-    [ObservableProperty]
-    private bool _isSettingsActive;
-
-    private bool _isSettingsDockVisible;
 
     [ObservableProperty]
     private bool _isSongsActive;
@@ -35,46 +32,79 @@ public partial class MainWindowViewModel : ObservableObject
 
     public MainWindowViewModel()
     {
-        HomeViewModel = new HomeViewModel(this);
-
-        ToggleSettingsCommand = new RelayCommand(_ =>
-            IsSettingsDockVisible = !IsSettingsDockVisible
+        _menuItems.Add(
+            new MenuItemViewModel
+            {
+                Header = "Home",
+                IconKind = MaterialIconKind.Home,
+                PageContent = new HomeView(),
+            }
         );
+        _menuItems.Add(
+            new MenuItemViewModel
+            {
+                Header = "Chords",
+                IconKind = MaterialIconKind.MusicNote,
+                PageContent = new ChordsView(),
+            }
+        );
+        _menuItems.Add(
+            new MenuItemViewModel
+            {
+                Header = "Scales",
+                IconKind = MaterialIconKind.MusicAccidentalFlat,
+                PageContent = new ScalesView(),
+            }
+        );
+        _menuItems.Add(
+            new MenuItemViewModel
+            {
+                Header = "Videos",
+                IconKind = MaterialIconKind.VideoBox,
+                PageContent = new VideosView(),
+            }
+        );
+        _menuItems.Add(
+            new MenuItemViewModel
+            {
+                Header = "Songs",
+                IconKind = MaterialIconKind.BoxMusic,
+                PageContent = new SongsView(),
+            }
+        );
+        _menuItems.Add(
+            new MenuItemViewModel
+            {
+                Header = "Settings",
+                IconKind = MaterialIconKind.Settings,
+                PageContent = new SettingsView(),
+            }
+        );
+
+        SelectedMenuItemView = _menuItems[0];
     }
 
-    public HomeViewModel HomeViewModel { get; }
+    private ObservableCollection<MenuItemViewModel> _menuItems { get; } = [];
 
-    public ChordsViewModel ChordsViewModel { get; } = new();
-    public ScalesViewModel ScalesViewModel { get; } = new();
-    public VideosViewModel VideosViewModel { get; } = new();
-
-    public SongsViewModel SongsViewModel { get; } = new();
-    public SettingsViewModel SettingsViewModel { get; } = new();
-
-    private bool IsSettingsDockVisible
+    public MenuItemViewModel SelectedMenuItemView
     {
-        get => _isSettingsDockVisible;
+        get;
         set
         {
-            if (_isSettingsDockVisible != value)
-            {
-                _isSettingsDockVisible = value;
-                OnPropertyChanged();
-            }
+            if (field == value)
+                return;
+            field = value;
+            OnPropertyChanged();
         }
     }
-
-    public ICommand ToggleSettingsCommand { get; }
 
     [RelayCommand]
     private void SetActivePage(string pageName)
     {
-        IsHomeActive = pageName == "Home";
         IsChordsActive = pageName == "Chords";
         IsScalesActive = pageName == "Scales";
         IsVideosActive = pageName == "Videos";
         IsSongsActive = pageName == "Songs";
-        IsSettingsActive = pageName == "Settings";
     }
 
     public event PropertyChangedEventHandler PropertyChanged;
@@ -107,4 +137,18 @@ public class RelayCommand : ICommand
     }
 
     public event EventHandler CanExecuteChanged;
+}
+
+public class MenuItemViewModel : SukiSideMenuItem
+{
+    public string header = string.Empty;
+    public MaterialIconKind IconKind;
+    public ContentControl PageContent = new();
+
+    public event PropertyChangedEventHandler PropertyChanged;
+
+    protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
+    {
+        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
 }
