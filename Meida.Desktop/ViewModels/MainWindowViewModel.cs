@@ -10,85 +10,80 @@ using Material.Icons;
 using Meida.Desktop.Views;
 using SukiUI.Controls;
 
+
 namespace Meida.Desktop.ViewModels;
 
 public partial class MainWindowViewModel : ViewModelBase
 {
-    [ObservableProperty]
-    private bool _isChordsActive;
+ 
 
-    [ObservableProperty]
-    private bool _isScalesActive;
-
-    [ObservableProperty]
-    private bool _isSongsActive;
-
-    [ObservableProperty]
-    private bool _isVideosActive;
-
+    
+    private SukiSideMenuItem _selectedPage;
     private bool _option1Enabled;
 
     private double _option2Value = 50;
 
     public MainWindowViewModel()
     {
-        _menuItems.Add(
+        MenuItems.Add(
             new MenuItemViewModel
             {
                 Header = "Home",
-                IconKind = MaterialIconKind.Home,
+                Icon = MaterialIconKind.Home,
                 PageContent = new HomeView(),
             }
         );
-        _menuItems.Add(
+        MenuItems.Add(
             new MenuItemViewModel
             {
                 Header = "Chords",
-                IconKind = MaterialIconKind.MusicNote,
+                Icon = MaterialIconKind.MusicNote,
                 PageContent = new ChordsView(),
             }
         );
-        _menuItems.Add(
+        MenuItems.Add(
             new MenuItemViewModel
             {
                 Header = "Scales",
-                IconKind = MaterialIconKind.MusicAccidentalFlat,
+                Icon = MaterialIconKind.MusicAccidentalFlat,
                 PageContent = new ScalesView(),
             }
         );
-        _menuItems.Add(
+        MenuItems.Add(
             new MenuItemViewModel
             {
                 Header = "Videos",
-                IconKind = MaterialIconKind.VideoBox,
+                Icon = MaterialIconKind.VideoBox,
                 PageContent = new VideosView(),
             }
         );
-        _menuItems.Add(
+        MenuItems.Add(
             new MenuItemViewModel
             {
                 Header = "Songs",
-                IconKind = MaterialIconKind.BoxMusic,
+                Icon = MaterialIconKind.BoxMusic,
                 PageContent = new SongsView(),
             }
         );
-        _menuItems.Add(
+        MenuItems.Add(
             new MenuItemViewModel
             {
                 Header = "Settings",
-                IconKind = MaterialIconKind.Settings,
+                Icon = MaterialIconKind.Settings,
                 PageContent = new SettingsView(),
             }
         );
-
-        SelectedMenuItemView = _menuItems[0];
+        _selectedPage = MenuItems[0];
+        
+     
     }
 
-    private ObservableCollection<MenuItemViewModel> _menuItems { get; } = [];
+    public ObservableCollection<MenuItemViewModel> MenuItems { get; set; } = [];
 
-    public MenuItemViewModel SelectedMenuItemView
+    
+    public SukiSideMenuItem SelectedMenuItem
     {
-        get;
+        get => _selectedPage;
         set
         {
             if (field == value)
@@ -98,18 +93,11 @@ public partial class MainWindowViewModel : ViewModelBase
         }
     }
 
-    [RelayCommand]
-    private void SetActivePage(string pageName)
-    {
-        IsChordsActive = pageName == "Chords";
-        IsScalesActive = pageName == "Scales";
-        IsVideosActive = pageName == "Videos";
-        IsSongsActive = pageName == "Songs";
-    }
+ 
 
-    public event PropertyChangedEventHandler PropertyChanged;
+    public event PropertyChangedEventHandler? PropertyChanged;
 
-    private void OnPropertyChanged([CallerMemberName] string propertyName = null)
+    private new void OnPropertyChanged([CallerMemberName] string propertyName = null)
     {
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
@@ -135,20 +123,6 @@ public class RelayCommand : ICommand
     {
         _execute(parameter);
     }
-
+ 
     public event EventHandler CanExecuteChanged;
-}
-
-public class MenuItemViewModel : SukiSideMenuItem
-{
-    public string header = string.Empty;
-    public MaterialIconKind IconKind;
-    public ContentControl PageContent = new();
-
-    public event PropertyChangedEventHandler PropertyChanged;
-
-    protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
-    {
-        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
 }

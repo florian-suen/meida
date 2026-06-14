@@ -9,8 +9,8 @@
     <ScrollViewer Margin="20">
         <StackPanel Spacing="20" MaxWidth="600" HorizontalAlignment="Left">
 
-            <TextBlock Text="{Binding SettingsTitle}" FontSize="24" FontWeight="Bold" />
-            <TextBlock Text="{Binding SettingsTitle}" FontSize="16" />
+            <TextBlock Text="HEEKJ" FontSize="24" FontWeight="Bold" />
+           
         </StackPanel>
     </ScrollViewer>
 </UserControl>

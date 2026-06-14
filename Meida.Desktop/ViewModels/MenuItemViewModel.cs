@@ -1,21 +1,17 @@
-﻿using System.ComponentModel;
-using System.Runtime.CompilerServices;
+﻿ 
 using Avalonia.Controls;
+using CommunityToolkit.Mvvm.ComponentModel;
 using Material.Icons;
 using SukiUI.Controls;
 
-namespace Meida.Desktop.Models;
+namespace Meida.Desktop.ViewModels;
 
-public class MenuItemViewModel : SukiSideMenuItem
-{
-    public ContentControl PageContent = new UserControl();
-    public string Header { get; set; }
-    public MaterialIconKind IconKind { get; set; }
+public  partial class MenuItemViewModel : SukiSideMenuItem
+{    
+      private string _header = string.Empty;
+      private ContentControl _pageContent = new ContentControl();
+      private string _icon = string.Empty;
+      private bool _isVisible = true;
+      private bool _isExpanded = true;
 
-    public event PropertyChangedEventHandler PropertyChanged;
-
-    protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
-    {
-        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
 }

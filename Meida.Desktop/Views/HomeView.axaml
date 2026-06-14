@@ -22,7 +22,7 @@
             </Style>
         </Grid.Styles>
 
-        <Button Command="{Binding GoToChordsCommand}" Grid.Column="0" Grid.Row="0" BorderThickness="0" Padding="0"
+        <Button  Grid.Column="0" Grid.Row="0" BorderThickness="0" Padding="0"
                 HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
                 HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
             <Button.Background>
@@ -39,7 +39,7 @@
         </Button>
 
 
-        <Button Command="{Binding GoToScalesCommand}" Grid.Column="1" Grid.Row="0" BorderThickness="0" Padding="0"
+        <Button  Grid.Column="1" Grid.Row="0" BorderThickness="0" Padding="0"
                 HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
                 HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
             <Button.Background>
@@ -54,7 +54,7 @@
             </Grid>
         </Button>
         <Button
-            Command="{Binding GoToVideosCommand}"
+            
             Grid.Column="0" Grid.Row="1"
             HorizontalAlignment="Stretch"
             VerticalAlignment="Stretch"
@@ -73,7 +73,7 @@
             </Grid>
 
         </Button>
-        <Button Command="{Binding GoToSongsCommand}"
+        <Button  
                 Grid.Column="1" Grid.Row="1"
                 BorderThickness="0"
                 Padding="0"

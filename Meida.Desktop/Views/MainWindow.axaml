@@ -42,8 +42,8 @@
 
 
                 <sukiUi:SukiSideMenu
-                    ItemsSource="{Binding _menuItems, Mode=OneWay}"
-                    SelectedItem="{Binding SelectedMenuItemView, Mode=TwoWay}"
+                    ItemsSource="{Binding MenuItems, Mode=OneWay}"
+                    SelectedItem="{Binding SelectedMenuItem, Mode=TwoWay}"
                     SidebarToggleEnabled="True"
                     ClipToBounds="True"
                     IsSearchEnabled="True">
@@ -51,12 +51,10 @@
 
                     <sukiUi:SukiSideMenu.ItemTemplate>
 
-                        <DataTemplate>
-                            <sukiUi:SukiSideMenuItem PageContent="{Binding PageContent}"
-                                                     Header="{Binding Header  }">
-
+                        <DataTemplate >
+                            <sukiUi:SukiSideMenuItem  Header="{Binding HeaderTemplate}" PageContent="{Binding PageContent}" >
                                 <sukiUi:SukiSideMenuItem.Icon>
-                                    <materialIcons:MaterialIcon Kind="{Binding IconKind}" Width="24" />
+                                    <materialIcons:MaterialIcon Kind="{Binding Icon}" Width="24" />
                                 </sukiUi:SukiSideMenuItem.Icon>
 
 
