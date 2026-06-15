@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              xmlns:vm="using:Meida.Desktop.ViewModels"
-             x:DataType="vm:HomeViewModel"
+             x:DataType="vm:MainWindowViewModel"
              x:Class="Meida.Desktop.Views.HomeView">
     <Grid ColumnSpacing="10" RowSpacing="10" ColumnDefinitions="*,*" RowDefinitions="*,*"
           Margin="15,0,15,10">
@@ -22,7 +22,8 @@
             </Style>
         </Grid.Styles>
 
-        <Button  Grid.Column="0" Grid.Row="0" BorderThickness="0" Padding="0"
+        <Button Command="{Binding NavigateCommand}" CommandParameter="Chords" Grid.Column="0" Grid.Row="0"
+                BorderThickness="0" Padding="0"
                 HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
                 HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
             <Button.Background>
@@ -39,7 +40,8 @@
         </Button>
 
 
-        <Button  Grid.Column="1" Grid.Row="0" BorderThickness="0" Padding="0"
+        <Button Command="{Binding NavigateCommand}" CommandParameter="Scales" Grid.Column="1" Grid.Row="0"
+                BorderThickness="0" Padding="0"
                 HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
                 HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
             <Button.Background>
@@ -54,7 +56,7 @@
             </Grid>
         </Button>
         <Button
-            
+            Command="{Binding NavigateCommand}" CommandParameter="Videos"
             Grid.Column="0" Grid.Row="1"
             HorizontalAlignment="Stretch"
             VerticalAlignment="Stretch"
@@ -73,15 +75,16 @@
             </Grid>
 
         </Button>
-        <Button  
-                Grid.Column="1" Grid.Row="1"
-                BorderThickness="0"
-                Padding="0"
-                Margin="0"
-                HorizontalAlignment="Stretch"
-                VerticalAlignment="Stretch"
-                HorizontalContentAlignment="Center"
-                VerticalContentAlignment="Center">
+        <Button
+            Command="{Binding NavigateCommand}" CommandParameter="Songs"
+            Grid.Column="1" Grid.Row="1"
+            BorderThickness="0"
+            Padding="0"
+            Margin="0"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Stretch"
+            HorizontalContentAlignment="Center"
+            VerticalContentAlignment="Center">
             <Button.Background>
                 <ImageBrush Source="avares://Meida.Desktop/Assets/songs_bg.jpg"
                             Stretch="UniformToFill"

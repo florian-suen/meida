@@ -1,0 +1,47 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             xmlns:vm="using:Meida.Desktop.ViewModels"
+             x:Class="Meida.Desktop.ViewModels.ChordsDiagramViewModel"
+             x:DataType="vm:ChordsDiagramViewModel">
+
+
+    <Canvas Width="100" Height="120" HorizontalAlignment="Center">
+
+
+        <Line X1="10" Y1="20" X2="10" Y2="120" Stroke="{DynamicResource ThemeForegroundBrush}" StrokeThickness="2" />
+        <Line X1="30" Y1="20" X2="30" Y2="120" Stroke="{DynamicResource ThemeForegroundBrush}" StrokeThickness="2" />
+        <Line X1="50" Y1="20" X2="50" Y2="120" Stroke="{DynamicResource ThemeForegroundBrush}" StrokeThickness="2" />
+        <Line X1="70" Y1="20" X2="70" Y2="120" Stroke="{DynamicResource ThemeForegroundBrush}" StrokeThickness="2" />
+        <Line X1="90" Y1="20" X2="90" Y2="120" Stroke="{DynamicResource ThemeForegroundBrush}" StrokeThickness="2" />
+
+        <!-- 2. Draw the Frets (Horizontal Lines) - e.g., 4 frets -->
+        <Line X1="10" Y1="40" X2="90" Y2="40" Stroke="{DynamicResource ThemeBorderLowBrush}" StrokeThickness="1" />
+        <Line X1="10" Y1="65" X2="90" Y2="65" Stroke="{DynamicResource ThemeBorderLowBrush}" StrokeThickness="1" />
+        <Line X1="10" Y1="90" X2="90" Y2="90" Stroke="{DynamicResource ThemeBorderLowBrush}" StrokeThickness="1" />
+        <Line X1="10" Y1="115" X2="90" Y2="115" Stroke="{DynamicResource ThemeBorderLowBrush}" StrokeThickness="1" />
+
+
+        <ItemsControl ItemsSource="{Binding Fingers}">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+
+                    <Canvas>
+
+                        <Ellipse Width="16" Height="16" Fill="{DynamicResource ThemeAccentBrush}"
+                                 Canvas.Left="{Binding StringNumber, Converter={StaticResource StringToXConverter}}"
+                                 Canvas.Top="{Binding FretNumber, Converter={StaticResource FretToYConverter}}" />
+
+
+                        <TextBlock Text="{Binding FingerNumber}" FontSize="10" FontWeight="Bold" Foreground="White"
+                                   Canvas.Left="{Binding StringNumber, Converter={StaticResource StringToXConverter}, ConverterParameter=4}"
+                                   Canvas.Top="{Binding FretNumber, Converter={StaticResource FretToYConverter}, ConverterParameter=3}" />
+                    </Canvas>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+
+    </Canvas>
+</UserControl>

@@ -4,6 +4,7 @@
     <option name="projectPerEditor">
       <map>
         <entry key="Meida.Desktop/App.axaml" value="Meida.Desktop/Meida.Desktop.csproj" />
+        <entry key="Meida.Desktop/Views/ChordDiagramView.axaml" value="Meida.Desktop/Meida.Desktop.csproj" />
         <entry key="Meida.Desktop/Views/Chords.axaml" value="Meida.Desktop/Meida.Desktop.csproj" />
         <entry key="Meida.Desktop/Views/ChordsView.axaml" value="Meida.Desktop/Meida.Desktop.csproj" />
         <entry key="Meida.Desktop/Views/ChordsWindow.axaml" value="Meida.Desktop/Meida.Desktop.csproj" />
