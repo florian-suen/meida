@@ -16,6 +16,7 @@
     <Application.Styles>
         <materialIcons:MaterialIconStyles />
         <StyleInclude Source="avares://SukiUI.Dock/Index.axaml" />
+
         <sukiUi:SukiTheme ThemeColor="Red" />
     </Application.Styles>
 </Application>

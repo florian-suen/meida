@@ -1,17 +1,25 @@
 ﻿using System.Collections.ObjectModel;
+using Avalonia;
 using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace Meida.Desktop.ViewModels;
 
 public class FingerPosition : ObservableObject
 {
-    public int StringNumber { get; set; } // 1 to 6 (1 = high E, 6 = low E)
-    public int FretNumber { get; set; } // 0 = open, 1+ = fret number
-    public int FingerNumber { get; set; } // 1=Index, 2=Middle, 3=Ring, 4=Pinky
+    public int StringNumber { get; set; }
+    public int FretNumber { get; set; }
+    public int FingerNumber { get; set; }
+
+    public double XPosition => 10 + (StringNumber - 1) * 20;
+    public double YPosition => 20 + (FretNumber - 1) * 25;
+
+    public Thickness PositionMargin => new(XPosition, YPosition, 0, 0);
 }
 
-public class ChordsDiagramViewModel : ObservableObject
+public partial class ChordsDiagramViewModel : ObservableObject
 {
-    public string ChordName { get; set; } = "C Major";
-    public ObservableCollection<FingerPosition> Fingers { get; set; } = new();
+    [ObservableProperty]
+    private string _chordName = "C Major";
+
+    public ObservableCollection<FingerPosition> Fingers { get; } = new();
 }

@@ -2,7 +2,191 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:materialIcons="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+
+             xmlns:sukiUi="clr-namespace:SukiUI.Controls;assembly=SukiUI"
              x:Class="Meida.Desktop.Views.SongsView">
-    Welcome to Avalonia!
+
+    <ScrollViewer HorizontalAlignment="Center">
+        <StackPanel>
+            <TextBlock Margin="0,0,38,30" Text="Songs"
+                       FontSize="34"
+                       FontWeight="Bold"
+                       HorizontalAlignment="Center" />
+            <WrapPanel ItemSpacing="20" LineSpacing="20" Margin="20,0">
+                <sukiUi:GlassCard Width="320">
+                    <StackPanel Spacing="20">
+                        <Image Source="avares://Meida.Desktop/Assets/Songs/dookie.jpg"
+                               Width="200"
+                               Height="200"
+                               Stretch="Uniform" />
+                        <StackPanel Spacing="5">
+                            <TextBlock FontSize="16">
+                                <Run Text="Song   " Foreground="#AE7AAE" FontWeight="Bold" />
+                                <Run Text="When I Come Around" Foreground="#FFF1FF" />
+                            </TextBlock>
+                            <TextBlock FontSize="16">
+                                <Run Text="Album " Foreground="#AE7AAE" FontWeight="Bold" />
+                                <Run Text="Dookie" Foreground="#FFF1FF" />
+                            </TextBlock>
+                            <StackPanel Margin="0,15,0,0" HorizontalAlignment="Right" Spacing="20"
+                                        Orientation="Horizontal">
+                                <Button>Learn</Button>
+                                <Button BorderThickness="0" Padding="0" Margin="0">
+                                    <materialIcons:MaterialIcon Width="40" Kind="Download" />
+                                </Button>
+                                <Button BorderThickness="0" Padding="0" Margin="0">
+                                    <materialIcons:MaterialIcon Width="40" Kind="PlayCircleFilled" />
+                                </Button>
+                            </StackPanel>
+
+                        </StackPanel>
+                    </StackPanel>
+                </sukiUi:GlassCard>
+                <sukiUi:GlassCard Width="320">
+                    <StackPanel Spacing="20">
+                        <Image Source="avares://Meida.Desktop/Assets/Songs/backinblack.jpg"
+                               Width="200"
+                               Height="200"
+                               Stretch="Uniform" />
+                        <StackPanel Spacing="5">
+                            <TextBlock FontSize="16">
+                                <Run Text="Song   " Foreground="#AE7AAE" FontWeight="Bold" />
+                                <Run Text="Back In Black" Foreground="#FFF1FF" />
+                            </TextBlock>
+                            <TextBlock FontSize="16">
+                                <Run Text="Album " Foreground="#AE7AAE" FontWeight="Bold" />
+                                <Run Text="Back In Black" Foreground="#FFF1FF" />
+                            </TextBlock>
+                            <StackPanel Margin="0,15,0,0" HorizontalAlignment="Right" Spacing="20"
+                                        Orientation="Horizontal">
+                                <Button>Learn</Button>
+                                <Button BorderThickness="0" Padding="0" Margin="0">
+                                    <materialIcons:MaterialIcon Width="40" Kind="Download" />
+                                </Button>
+                                <Button BorderThickness="0" Padding="0" Margin="0">
+                                    <materialIcons:MaterialIcon Width="40" Kind="PlayCircleFilled" />
+                                </Button>
+                            </StackPanel>
+                        </StackPanel>
+                    </StackPanel>
+                </sukiUi:GlassCard>
+                <sukiUi:GlassCard Width="320">
+                    <StackPanel Spacing="20">
+                        <Image Source="avares://Meida.Desktop/Assets/Songs/appetitefordestruction.jpg"
+                               Width="200"
+                               Height="200"
+                               Stretch="Uniform" />
+                        <StackPanel Spacing="5">
+                            <TextBlock FontSize="16">
+                                <Run Text="Song   " Foreground="#AE7AAE" FontWeight="Bold" />
+                                <Run Text="Nighttrain" Foreground="#FFF1FF" />
+                            </TextBlock>
+                            <TextBlock FontSize="16">
+                                <Run Text="Album " Foreground="#AE7AAE" FontWeight="Bold" />
+                                <Run Text="Appetite for Destruction" Foreground="#FFF1FF" />
+                            </TextBlock>
+                            <StackPanel Margin="0,15,0,0" HorizontalAlignment="Right" Spacing="20"
+                                        Orientation="Horizontal">
+                                <Button>Learn</Button>
+                                <Button BorderThickness="0" Padding="0" Margin="0">
+                                    <materialIcons:MaterialIcon Width="40" Kind="Download" />
+                                </Button>
+                                <Button BorderThickness="0" Padding="0" Margin="0">
+                                    <materialIcons:MaterialIcon Width="40" Kind="PlayCircleFilled" />
+                                </Button>
+                            </StackPanel>
+                        </StackPanel>
+                    </StackPanel>
+                </sukiUi:GlassCard>
+                <sukiUi:GlassCard Width="320">
+                    <StackPanel Spacing="20">
+                        <Image Source="avares://Meida.Desktop/Assets/Songs/nevermind.jpg"
+                               Width="200"
+                               Height="200"
+                               Stretch="Uniform" />
+                        <StackPanel Spacing="5">
+                            <TextBlock FontSize="16">
+                                <Run Text="Song   " Foreground="#AE7AAE" FontWeight="Bold" />
+                                <Run Text="Come As You Are" Foreground="#FFF1FF" />
+                            </TextBlock>
+                            <TextBlock FontSize="16">
+                                <Run Text="Album " Foreground="#AE7AAE" FontWeight="Bold" />
+                                <Run Text="Nevermind" Foreground="#FFF1FF" />
+                            </TextBlock>
+                            <StackPanel Margin="0,15,0,0" HorizontalAlignment="Right" Spacing="20"
+                                        Orientation="Horizontal">
+                                <Button>Learn</Button>
+                                <Button BorderThickness="0" Padding="0" Margin="0">
+                                    <materialIcons:MaterialIcon Width="40" Kind="Download" />
+                                </Button>
+                                <Button BorderThickness="0" Padding="0" Margin="0">
+                                    <materialIcons:MaterialIcon Width="40" Kind="PlayCircleFilled" />
+                                </Button>
+                            </StackPanel>
+                        </StackPanel>
+                    </StackPanel>
+                </sukiUi:GlassCard>
+                <sukiUi:GlassCard Width="320">
+                    <StackPanel Spacing="20">
+                        <Image Source="avares://Meida.Desktop/Assets/Songs/90125.jpg"
+                               Width="200"
+                               Height="200"
+                               Stretch="Uniform" />
+                        <StackPanel Spacing="5">
+                            <TextBlock FontSize="16">
+                                <Run Text="Song   " Foreground="#AE7AAE" FontWeight="Bold" />
+                                <Run Text="Owner of a Lonely Heart" Foreground="#FFF1FF" />
+                            </TextBlock>
+                            <TextBlock FontSize="16">
+                                <Run Text="Album " Foreground="#AE7AAE" FontWeight="Bold" />
+                                <Run Text="90125" Foreground="#FFF1FF" />
+                            </TextBlock>
+                            <StackPanel Margin="0,15,0,0" HorizontalAlignment="Right" Spacing="20"
+                                        Orientation="Horizontal">
+                                <Button>Learn</Button>
+                                <Button BorderThickness="0" Padding="0" Margin="0">
+                                    <materialIcons:MaterialIcon Width="40" Kind="Download" />
+                                </Button>
+                                <Button BorderThickness="0" Padding="0" Margin="0">
+                                    <materialIcons:MaterialIcon Width="40" Kind="PlayCircleFilled" />
+                                </Button>
+                            </StackPanel>
+                        </StackPanel>
+                    </StackPanel>
+                </sukiUi:GlassCard>
+                <sukiUi:GlassCard Width="320">
+                    <StackPanel Spacing="20">
+                        <Image Source="avares://Meida.Desktop/Assets/Songs/jailbreak.jpg"
+                               Width="200"
+                               Height="200"
+                               Stretch="Uniform" />
+                        <StackPanel Spacing="5">
+                            <TextBlock FontSize="16">
+                                <Run Text="Song   " Foreground="#AE7AAE" FontWeight="Bold" />
+                                <Run Text="The Boys Are Back in Town" Foreground="#FFF1FF" />
+                            </TextBlock>
+                            <TextBlock FontSize="16">
+                                <Run Text="Album " Foreground="#AE7AAE" FontWeight="Bold" />
+                                <Run Text="jailbreak" Foreground="#FFF1FF" />
+                            </TextBlock>
+                            <StackPanel Margin="0,15,0,0" HorizontalAlignment="Right" Spacing="20"
+                                        Orientation="Horizontal">
+                                <Button>Learn</Button>
+                                <Button BorderThickness="0" Padding="0" Margin="0">
+                                    <materialIcons:MaterialIcon Width="40" Kind="Download" />
+                                </Button>
+                                <Button BorderThickness="0" Padding="0" Margin="0">
+                                    <materialIcons:MaterialIcon Width="40" Kind="PlayCircleFilled" />
+                                </Button>
+                            </StackPanel>
+                        </StackPanel>
+                    </StackPanel>
+                </sukiUi:GlassCard>
+
+            </WrapPanel>
+        </StackPanel>
+    </ScrollViewer>
+
 </UserControl>

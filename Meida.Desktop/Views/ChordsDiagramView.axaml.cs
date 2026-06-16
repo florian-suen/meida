@@ -2,9 +2,9 @@
 
 namespace Meida.Desktop.Views;
 
-public class ChordDiagramView : UserControl
+public partial class ChordsDiagramView : UserControl
 {
-    public ChordDiagramView()
+    public ChordsDiagramView()
     {
         InitializeComponent();
     }

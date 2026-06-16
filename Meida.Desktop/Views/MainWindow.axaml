@@ -44,7 +44,6 @@
                 <sukiUi:SukiSideMenu
 
                     ItemsSource="{Binding MenuItems, Mode=OneWay}"
-                
                     SidebarToggleEnabled="True"
                     ClipToBounds="True"
                     IsSearchEnabled="True">
@@ -58,7 +57,7 @@
                     <sukiUi:SukiSideMenu.HeaderContent>
                         <StackPanel Orientation="Horizontal" Spacing="10" Margin="30,0">
                             <materialIcons:MaterialIcon Kind="Music" Width="32" Height="32" />
-                            <TextBlock Text="Media" FontSize="20" FontWeight="Bold" VerticalAlignment="Center" />
+                            <TextBlock Text="Meida" FontSize="20" FontWeight="Bold" VerticalAlignment="Center" />
                         </StackPanel>
                     </sukiUi:SukiSideMenu.HeaderContent>
 
