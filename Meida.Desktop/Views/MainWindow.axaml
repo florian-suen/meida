@@ -49,7 +49,9 @@
                     IsSearchEnabled="True">
                     <sukiUi:SukiSideMenu.ItemTemplate>
                         <DataTemplate>
+
                             <sukiUi:SukiSideMenuItem />
+
                         </DataTemplate>
                     </sukiUi:SukiSideMenu.ItemTemplate>
 

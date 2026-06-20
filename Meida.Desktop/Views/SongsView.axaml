@@ -8,7 +8,7 @@
              xmlns:sukiUi="clr-namespace:SukiUI.Controls;assembly=SukiUI"
              x:Class="Meida.Desktop.Views.SongsView">
 
-    <ScrollViewer HorizontalAlignment="Center">
+    <ScrollViewer HorizontalAlignment="Center" Margin="0,0,0,20">
         <StackPanel>
             <TextBlock Margin="0,0,38,30" Text="Songs"
                        FontSize="34"
@@ -32,7 +32,7 @@
                             </TextBlock>
                             <StackPanel Margin="0,15,0,0" HorizontalAlignment="Right" Spacing="20"
                                         Orientation="Horizontal">
-                                <Button>Learn</Button>
+                                <Button Classes="Flat">Learn</Button>
                                 <Button BorderThickness="0" Padding="0" Margin="0">
                                     <materialIcons:MaterialIcon Width="40" Kind="Download" />
                                 </Button>
@@ -61,7 +61,7 @@
                             </TextBlock>
                             <StackPanel Margin="0,15,0,0" HorizontalAlignment="Right" Spacing="20"
                                         Orientation="Horizontal">
-                                <Button>Learn</Button>
+                                <Button Classes="Flat">Learn</Button>
                                 <Button BorderThickness="0" Padding="0" Margin="0">
                                     <materialIcons:MaterialIcon Width="40" Kind="Download" />
                                 </Button>
@@ -81,7 +81,7 @@
                         <StackPanel Spacing="5">
                             <TextBlock FontSize="16">
                                 <Run Text="Song   " Foreground="#AE7AAE" FontWeight="Bold" />
-                                <Run Text="Nighttrain" Foreground="#FFF1FF" />
+                                <Run Text="Nightrain" Foreground="#FFF1FF" />
                             </TextBlock>
                             <TextBlock FontSize="16">
                                 <Run Text="Album " Foreground="#AE7AAE" FontWeight="Bold" />
@@ -89,7 +89,7 @@
                             </TextBlock>
                             <StackPanel Margin="0,15,0,0" HorizontalAlignment="Right" Spacing="20"
                                         Orientation="Horizontal">
-                                <Button>Learn</Button>
+                                <Button Classes="Flat">Learn</Button>
                                 <Button BorderThickness="0" Padding="0" Margin="0">
                                     <materialIcons:MaterialIcon Width="40" Kind="Download" />
                                 </Button>
@@ -117,7 +117,7 @@
                             </TextBlock>
                             <StackPanel Margin="0,15,0,0" HorizontalAlignment="Right" Spacing="20"
                                         Orientation="Horizontal">
-                                <Button>Learn</Button>
+                                <Button Classes="Flat">Learn</Button>
                                 <Button BorderThickness="0" Padding="0" Margin="0">
                                     <materialIcons:MaterialIcon Width="40" Kind="Download" />
                                 </Button>
@@ -145,7 +145,7 @@
                             </TextBlock>
                             <StackPanel Margin="0,15,0,0" HorizontalAlignment="Right" Spacing="20"
                                         Orientation="Horizontal">
-                                <Button>Learn</Button>
+                                <Button Classes="Flat">Learn</Button>
                                 <Button BorderThickness="0" Padding="0" Margin="0">
                                     <materialIcons:MaterialIcon Width="40" Kind="Download" />
                                 </Button>
@@ -169,11 +169,11 @@
                             </TextBlock>
                             <TextBlock FontSize="16">
                                 <Run Text="Album " Foreground="#AE7AAE" FontWeight="Bold" />
-                                <Run Text="jailbreak" Foreground="#FFF1FF" />
+                                <Run Text="Jailbreak" Foreground="#FFF1FF" />
                             </TextBlock>
                             <StackPanel Margin="0,15,0,0" HorizontalAlignment="Right" Spacing="20"
                                         Orientation="Horizontal">
-                                <Button>Learn</Button>
+                                <Button Classes="Flat">Learn</Button>
                                 <Button BorderThickness="0" Padding="0" Margin="0">
                                     <materialIcons:MaterialIcon Width="40" Kind="Download" />
                                 </Button>

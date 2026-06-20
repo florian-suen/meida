@@ -1,6 +1,6 @@
 ﻿using Avalonia.Controls;
 
-namespace Meida.Desktop.Views;
+namespace Meida.Desktop.Views.Chords;
 
 public partial class ChordsView : UserControl
 {

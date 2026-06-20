@@ -8,6 +8,7 @@ using System.Windows.Input;
 using Material.Icons;
 using Material.Icons.Avalonia;
 using Meida.Desktop.Views;
+using Meida.Desktop.Views.Chords;
 using SukiUI.Controls;
 
 namespace Meida.Desktop.ViewModels;
@@ -56,7 +57,7 @@ public class MainWindowViewModel : ViewModelBase
                 Width = 24,
                 Height = 24,
             },
-            PageContent = new ChordsView(),
+            PageContent = new ChordsView { DataContext = new ChordsViewModel() },
         },
         new()
         {

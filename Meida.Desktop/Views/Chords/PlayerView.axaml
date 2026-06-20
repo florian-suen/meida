@@ -1,0 +1,136 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             xmlns:materialIcons="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
+             xmlns:sukiUi="clr-namespace:SukiUI.Controls;assembly=SukiUI"
+             xmlns:vm="using:Meida.Desktop.ViewModels"
+             x:DataType="vm:PlayerViewModel"
+             x:Class="Meida.Desktop.Views.Chords.PlayerView">
+    <StackPanel HorizontalAlignment="Center" Spacing="20">
+
+
+        <ComboBox MaxWidth="200"
+                  Margin="20,0,0,0"
+                  PlaceholderText="Select a Key"
+                  ItemsSource="{Binding BackgroundMusic}"
+                  SelectedItem="{Binding SelectedItem}" />
+
+
+        <Grid>
+            <Line StartPoint="0,20" EndPoint="5000,20" Stroke="Gray" StrokeThickness="1" />
+            <Line StartPoint="0,45" EndPoint="5000,45" Stroke="Gray" StrokeThickness="1" />
+            <Line StartPoint="0,70" EndPoint="5000,70" Stroke="Gray" StrokeThickness="1" />
+            <Line StartPoint="0,95" EndPoint="5000,95" Stroke="Gray" StrokeThickness="1" />
+            <Line StartPoint="0,120" EndPoint="5000,120" Stroke="Gray" StrokeThickness="1" />
+            <Line StartPoint="0,145" EndPoint="5000,145" Stroke="Gray" StrokeThickness="1" />
+
+            <Line StartPoint="140,20" EndPoint="140,145" Stroke="#4B354B" StrokeThickness="2" />
+            <Line StartPoint="380,20" EndPoint="380,145" Stroke="#4B354B" StrokeThickness="2" />
+            <Line StartPoint="620,20" EndPoint="620,145" Stroke="#4B354B" StrokeThickness="2" />
+
+            <Line StartPoint="550,20" EndPoint="550,145"
+                  Stroke="#AD3341" StrokeThickness="2" IsHitTestVisible="False" />
+
+            <TextBlock Margin="50,36,0,0"> 3</TextBlock>
+            <TextBlock Margin="50,62,0,0"> 3</TextBlock>
+            <TextBlock Margin="50,86,0,0"> 3</TextBlock>
+            <TextBlock Margin="50,111,0,0"> 0</TextBlock>
+
+            <TextBlock Margin="180,36,0,0">0</TextBlock>
+            <TextBlock Margin="180,62,0,0"> 2</TextBlock>
+            <TextBlock Margin="180,86,0,0"> 2</TextBlock>
+
+            <TextBlock Margin="220,36,0,0">0</TextBlock>
+            <TextBlock Margin="220,62,0,0"> 2</TextBlock>
+            <TextBlock Margin="220,86,0,0"> 2</TextBlock>
+
+            <TextBlock Margin="250,36,0,0">5</TextBlock>
+            <TextBlock Margin="300,62,0,0"> 2</TextBlock>
+            <TextBlock Margin="333,86,0,0"> 14</TextBlock>
+
+            <TextBlock Margin="420,36,0,0">0</TextBlock>
+            <TextBlock Margin="420,62,0,0"> 2</TextBlock>
+            <TextBlock Margin="420,86,0,0"> 2</TextBlock>
+
+            <TextBlock Margin="460,36,0,0">0</TextBlock>
+            <TextBlock Margin="460,62,0,0"> 2</TextBlock>
+            <TextBlock Margin="460,86,0,0"> 2</TextBlock>
+
+            <TextBlock Margin="490,36,0,0">5</TextBlock>
+            <TextBlock Margin="540,62,0,0"> 2</TextBlock>
+            <TextBlock Margin="570,86,0,0"> 14</TextBlock>
+        </Grid>
+
+        <StackPanel Spacing="10" VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal">
+
+            <Button Padding="0" Margin="0" BorderThickness="0">
+                <materialIcons:MaterialIcon Width="50" Kind="SkipPreviousOutline" />
+            </Button>
+            <Button Padding="0" Margin="0" BorderThickness="0">
+                <materialIcons:MaterialIcon Width="60" Kind="PauseCircle" />
+            </Button>
+            <Button Padding="0" Margin="0" BorderThickness="0">
+                <materialIcons:MaterialIcon Width="50" Kind="SkipNextOutline" />
+            </Button>
+        </StackPanel>
+
+        <WrapPanel Margin="10,50" ItemSpacing="10" LineSpacing="15" HorizontalAlignment="Center">
+            <sukiUi:GlassCard>
+                <StackPanel Spacing="10" HorizontalAlignment="Center" Orientation="Horizontal">
+                    <TextBlock>C Chord</TextBlock>
+                    <Button Padding="0" Foreground="White" Classes="Basic">
+                        <materialIcons:MaterialIcon Kind="CancelCircle" />
+                    </Button>
+                </StackPanel>
+            </sukiUi:GlassCard>
+            <materialIcons:MaterialIcon Kind="ChevronRight" />
+            <sukiUi:GlassCard>
+                <StackPanel Spacing="10" HorizontalAlignment="Center" Orientation="Horizontal">
+                    <TextBlock>G Chord</TextBlock>
+                    <Button Padding="0" Foreground="White" Classes="Basic">
+                        <materialIcons:MaterialIcon Kind="CancelCircle" />
+                    </Button>
+                </StackPanel>
+            </sukiUi:GlassCard>
+            <materialIcons:MaterialIcon Kind="ChevronRight" />
+            <sukiUi:GlassCard>
+                <StackPanel Spacing="10" HorizontalAlignment="Center" Orientation="Horizontal">
+                    <TextBlock>C Chord</TextBlock>
+                    <Button Padding="0" Foreground="White" Classes="Basic">
+                        <materialIcons:MaterialIcon Kind="CancelCircle" />
+                    </Button>
+                </StackPanel>
+            </sukiUi:GlassCard>
+            <materialIcons:MaterialIcon Kind="ChevronRight" />
+            <sukiUi:GlassCard>
+                <StackPanel Spacing="10" HorizontalAlignment="Center" Orientation="Horizontal">
+                    <TextBlock>D Chord</TextBlock>
+                    <Button Padding="0" Foreground="White" Classes="Basic">
+                        <materialIcons:MaterialIcon Kind="CancelCircle" />
+                    </Button>
+                </StackPanel>
+            </sukiUi:GlassCard>
+            <materialIcons:MaterialIcon Kind="ChevronRight" />
+            <sukiUi:GlassCard>
+                <StackPanel Spacing="10" HorizontalAlignment="Center" Orientation="Horizontal">
+                    <TextBlock>F Chord</TextBlock>
+                    <Button Padding="0" Foreground="White" Classes="Basic">
+                        <materialIcons:MaterialIcon Kind="CancelCircle" />
+                    </Button>
+                </StackPanel>
+            </sukiUi:GlassCard>
+            <materialIcons:MaterialIcon Kind="ChevronRight" />
+            <sukiUi:GlassCard>
+                <StackPanel Spacing="10" HorizontalAlignment="Center" Orientation="Horizontal">
+                    <TextBlock>C Chord</TextBlock>
+                    <Button Padding="0" Foreground="White" Classes="Basic">
+                        <materialIcons:MaterialIcon Kind="CancelCircle" />
+                    </Button>
+                </StackPanel>
+            </sukiUi:GlassCard>
+        </WrapPanel>
+    </StackPanel>
+
+</UserControl>

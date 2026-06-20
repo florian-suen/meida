@@ -1,0 +1,48 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             xmlns:views="using:Meida.Desktop.Views.Chords"
+             xmlns:vm="using:Meida.Desktop.ViewModels"
+             xmlns:materialIcons="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
+             x:Class="Meida.Desktop.Views.Chords.ChordsView"
+             x:DataType="vm:ChordsViewModel">
+    <ScrollViewer>
+
+
+        <StackPanel>
+            <TextBlock Margin="0,0,38,10" Text="Chords"
+                       FontSize="34"
+                       FontWeight="Bold"
+                       HorizontalAlignment="Center" />
+            <TabControl TabStripPlacement="Right">
+                <TabItem Header="Major">
+                    <views:MajorView />
+                </TabItem>
+                <TabItem Header="Minor">
+                    <views:MinorView />
+                </TabItem>
+                <TabItem Foreground="#3389AB" Margin="48,0,0,0">
+                    <TabItem.Styles>
+                        <Style Selector="TabItem:selected">
+                            <Setter Property="Foreground" Value="#6366F1" />
+                        </Style>
+                    </TabItem.Styles>
+
+                    <TabItem.Header>
+
+                        <StackPanel>
+                            <TextBlock>Play</TextBlock>
+                            <materialIcons:MaterialIcon Width="30" Kind="PlayArrow" />
+                        </StackPanel>
+                    </TabItem.Header>
+                    <TabItem.RenderTransform>
+                        <RotateTransform Angle="-90" />
+                    </TabItem.RenderTransform>
+                    <views:PlayerView DataContext="{Binding PlayerVM}" />
+                </TabItem>
+            </TabControl>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

@@ -1,6 +1,18 @@
-﻿namespace Meida.Desktop.ViewModels;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 
-public class ChordsViewModel : ViewModelBase
+namespace Meida.Desktop.ViewModels;
+
+public partial class ChordsViewModel : ViewModelBase
 {
-    public string SettingsTitle { get; set; } = "Settings Page Layout";
+    [ObservableProperty]
+    private double _topPanelProportion = 0.15;
+
+    public PlayerViewModel PlayerVM { get; } = new();
+
+    [RelayCommand]
+    private void ToggleTopPanel()
+    {
+        TopPanelProportion = TopPanelProportion >= 0.4 ? 0.15 : 0.5;
+    }
 }

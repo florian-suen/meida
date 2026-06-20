@@ -35,4 +35,20 @@
   <ItemGroup>
     <Folder Include="Models\" />
   </ItemGroup>
+
+  <ItemGroup>
+    <AdditionalFiles Include="Views\Chords\ChordsDiagramView.axaml" />
+    <AdditionalFiles Include="Views\Chords\ChordsView.axaml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Views\Chords\ChordsDiagramView.axaml.cs">
+      <DependentUpon>ChordsDiagramView.axaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\Chords\ChordsView.axaml.cs">
+      <DependentUpon>ChordsView.axaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
 </Project>
