@@ -9,8 +9,6 @@
              x:Class="Meida.Desktop.Views.Chords.ChordsView"
              x:DataType="vm:ChordsViewModel">
     <ScrollViewer>
-
-
         <StackPanel>
             <TextBlock Margin="0,0,38,10" Text="Chords"
                        FontSize="34"
@@ -29,9 +27,7 @@
                             <Setter Property="Foreground" Value="#6366F1" />
                         </Style>
                     </TabItem.Styles>
-
                     <TabItem.Header>
-
                         <StackPanel>
                             <TextBlock>Play</TextBlock>
                             <materialIcons:MaterialIcon Width="30" Kind="PlayArrow" />

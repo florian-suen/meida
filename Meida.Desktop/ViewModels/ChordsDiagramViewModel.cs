@@ -12,11 +12,11 @@ public class FingerPosition : ObservableObject
     public int FretNumber { get; set; }
     public int FingerNumber { get; set; }
 
-    // Exact intersection point on the fretboard (matches the Line coordinates)
+  
     public double XPosition => 111 - (StringNumber - 1) * 20;
     public double YPosition => 33 + (FretNumber - 1) * 25;
 
-    // Offset by half the marker size so the ellipse is centered on the intersection
+ 
     public Thickness PositionMargin =>
         new(XPosition - MarkerSize / 2, YPosition - MarkerSize / 2, 0, 0);
 }
@@ -32,5 +32,8 @@ public partial class ChordsDiagramViewModel : ObservableObject
 
     public string BaseFretLabel => BaseFret > 1 ? $"{BaseFret}fr" : string.Empty;
 
-    public ObservableCollection<FingerPosition> Fingers { get; } = new();
+    public ObservableCollection<FingerPosition> Fingers { get; set; } = new();
 }
+
+
+ 

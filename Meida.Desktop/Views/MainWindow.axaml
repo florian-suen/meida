@@ -19,7 +19,6 @@
     TransparencyBackgroundFallback="{DynamicResource SukiBackgroundSolid}"
     BorderBrush="#6DFF18"
     WindowStartupLocation="CenterScreen">
-
     <Border BorderThickness="0,1,0,0" BorderBrush="#382738" Padding="0,10,0,0">
         <Grid RowDefinitions="50,*">
             <StackPanel Grid.Row="0" Spacing="5" Orientation="Horizontal" HorizontalAlignment="Right"
@@ -28,48 +27,35 @@
                 <Button Padding="15" BorderThickness="0" Cursor="Hand" Background="Transparent">
                     <Svg Path="/Assets/metronome.svg" Width="20" Height="20" HorizontalAlignment="Center" />
                 </Button>
-                <Separator Height="20" Width="1" /> <!-- Changed NaN to 20 -->
+                <Separator Height="20" Width="1" />
                 <Button Padding="15,0" Background="#A83A5C" BorderBrush="#7C303F" BorderThickness="1" Cursor="Hand">
                     <materialIcons:MaterialIcon Kind="Abacus" Width="20" />
                 </Button>
             </StackPanel>
-
-
             <Border Grid.Row="1"
                     CornerRadius="20 ,0,0,20"
                     ClipToBounds="True"
                     BoxShadow="0 4 15 0 #40000000">
-
-
                 <sukiUi:SukiSideMenu
-
                     ItemsSource="{Binding MenuItems, Mode=OneWay}"
                     SidebarToggleEnabled="True"
                     ClipToBounds="True"
                     IsSearchEnabled="True">
                     <sukiUi:SukiSideMenu.ItemTemplate>
                         <DataTemplate>
-
                             <sukiUi:SukiSideMenuItem />
-
                         </DataTemplate>
                     </sukiUi:SukiSideMenu.ItemTemplate>
-
-
                     <sukiUi:SukiSideMenu.HeaderContent>
                         <StackPanel Orientation="Horizontal" Spacing="10" Margin="30,0">
                             <materialIcons:MaterialIcon Kind="Music" Width="32" Height="32" />
                             <TextBlock Text="Meida" FontSize="20" FontWeight="Bold" VerticalAlignment="Center" />
                         </StackPanel>
                     </sukiUi:SukiSideMenu.HeaderContent>
-
                     <sukiUi:SukiSideMenu.FooterContent>
                         <TextBlock Text="v1.0.0" Margin="21,0" Opacity="0.5" />
                     </sukiUi:SukiSideMenu.FooterContent>
-
                 </sukiUi:SukiSideMenu>
-
-
             </Border>
         </Grid>
     </Border>

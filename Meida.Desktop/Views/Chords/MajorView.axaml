@@ -2,116 +2,28 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:sukiUi="clr-namespace:SukiUI.Controls;assembly=SukiUI"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             xmlns:views="using:Meida.Desktop.Views.Chords"
              xmlns:vm="using:Meida.Desktop.ViewModels"
+             xmlns:views="using:Meida.Desktop.Views.Chords"
+             xmlns:sukiUi="clr-namespace:SukiUI.Controls;assembly=SukiUI"
+             x:DataType="vm:ChordsViewModel"
              x:Class="Meida.Desktop.Views.Chords.MajorView">
-    <WrapPanel ItemSpacing="20" LineSpacing="20" Margin="30"
-               HorizontalAlignment="Center">
-        <sukiUi:GlassCard IsInteractive="True">
-            <views:ChordsDiagramView>
-                <views:ChordsDiagramView.DataContext>
-                    <vm:ChordsDiagramViewModel ChordName="C Major">
-                        <vm:ChordsDiagramViewModel.Fingers>
-                            <vm:FingerPosition StringNumber="2" FretNumber="1"
-                                               FingerNumber="1" />
-                            <vm:FingerPosition StringNumber="4" FretNumber="2"
-                                               FingerNumber="2" />
-                            <vm:FingerPosition StringNumber="5" FretNumber="3"
-                                               FingerNumber="3" />
 
+    <ItemsControl
+        ItemsSource="{Binding MajChords }">
+        <ItemsControl.ItemsPanel>
+            <ItemsPanelTemplate>
+                <WrapPanel ItemSpacing="20" LineSpacing="20" Margin="30"
+                           HorizontalAlignment="Center" />
+            </ItemsPanelTemplate>
+        </ItemsControl.ItemsPanel>
+        <ItemsControl.ItemTemplate>
+            <DataTemplate>
+                <sukiUi:GlassCard IsInteractive="True" Margin="10">
+                    <views:ChordsDiagramView ClipToBounds="False" />
+                </sukiUi:GlassCard>
+            </DataTemplate>
+        </ItemsControl.ItemTemplate>
+    </ItemsControl>
 
-                        </vm:ChordsDiagramViewModel.Fingers>
-                    </vm:ChordsDiagramViewModel>
-                </views:ChordsDiagramView.DataContext>
-            </views:ChordsDiagramView>
-        </sukiUi:GlassCard>
-        <sukiUi:GlassCard IsInteractive="True">
-            <views:ChordsDiagramView>
-                <views:ChordsDiagramView.DataContext>
-                    <vm:ChordsDiagramViewModel ChordName="G Major">
-                        <vm:ChordsDiagramViewModel.Fingers>
-                            <vm:FingerPosition StringNumber="6" FretNumber="3"
-                                               FingerNumber="2" />
-                            <vm:FingerPosition StringNumber="5" FretNumber="2"
-                                               FingerNumber="1" />
-                            <vm:FingerPosition StringNumber="1" FretNumber="3"
-                                               FingerNumber="3" />
-                        </vm:ChordsDiagramViewModel.Fingers>
-                    </vm:ChordsDiagramViewModel>
-                </views:ChordsDiagramView.DataContext>
-            </views:ChordsDiagramView>
-        </sukiUi:GlassCard>
-        <sukiUi:GlassCard IsInteractive="True">
-            <views:ChordsDiagramView>
-                <views:ChordsDiagramView.DataContext>
-                    <vm:ChordsDiagramViewModel ChordName="D Major">
-                        <vm:ChordsDiagramViewModel.Fingers>
-                            <vm:FingerPosition StringNumber="3" FretNumber="2"
-                                               FingerNumber="1" />
-                            <vm:FingerPosition StringNumber="1" FretNumber="2"
-                                               FingerNumber="2" />
-                            <vm:FingerPosition StringNumber="2" FretNumber="3"
-                                               FingerNumber="3" />
-                        </vm:ChordsDiagramViewModel.Fingers>
-                    </vm:ChordsDiagramViewModel>
-                </views:ChordsDiagramView.DataContext>
-            </views:ChordsDiagramView>
-        </sukiUi:GlassCard>
-        <sukiUi:GlassCard IsInteractive="True">
-            <views:ChordsDiagramView>
-                <views:ChordsDiagramView.DataContext>
-                    <vm:ChordsDiagramViewModel ChordName="A Major">
-                        <vm:ChordsDiagramViewModel.Fingers>
-                            <vm:FingerPosition StringNumber="4" FretNumber="2"
-                                               FingerNumber="1" />
-                            <vm:FingerPosition StringNumber="3" FretNumber="2"
-                                               FingerNumber="2" />
-                            <vm:FingerPosition StringNumber="2" FretNumber="2"
-                                               FingerNumber="3" />
-                        </vm:ChordsDiagramViewModel.Fingers>
-                    </vm:ChordsDiagramViewModel>
-                </views:ChordsDiagramView.DataContext>
-            </views:ChordsDiagramView>
-        </sukiUi:GlassCard>
-        <sukiUi:GlassCard IsInteractive="True">
-            <views:ChordsDiagramView>
-                <views:ChordsDiagramView.DataContext>
-                    <vm:ChordsDiagramViewModel ChordName="E Major">
-                        <vm:ChordsDiagramViewModel.Fingers>
-                            <vm:FingerPosition StringNumber="5" FretNumber="2"
-                                               FingerNumber="2" />
-                            <vm:FingerPosition StringNumber="4" FretNumber="2"
-                                               FingerNumber="3" />
-                            <vm:FingerPosition StringNumber="3" FretNumber="1"
-                                               FingerNumber="1" />
-                        </vm:ChordsDiagramViewModel.Fingers>
-                    </vm:ChordsDiagramViewModel>
-                </views:ChordsDiagramView.DataContext>
-            </views:ChordsDiagramView>
-        </sukiUi:GlassCard>
-        <sukiUi:GlassCard IsInteractive="True">
-            <views:ChordsDiagramView>
-                <views:ChordsDiagramView.DataContext>
-                    <vm:ChordsDiagramViewModel ChordName="F Major">
-                        <vm:ChordsDiagramViewModel.Fingers>
-                            <vm:FingerPosition StringNumber="6" FretNumber="1"
-                                               FingerNumber="1" />
-                            <vm:FingerPosition StringNumber="5" FretNumber="3"
-                                               FingerNumber="3" />
-                            <vm:FingerPosition StringNumber="4" FretNumber="3"
-                                               FingerNumber="4" />
-                            <vm:FingerPosition StringNumber="3" FretNumber="2"
-                                               FingerNumber="2" />
-                            <vm:FingerPosition StringNumber="2" FretNumber="1"
-                                               FingerNumber="1" />
-                            <vm:FingerPosition StringNumber="1" FretNumber="1"
-                                               FingerNumber="1" />
-                        </vm:ChordsDiagramViewModel.Fingers>
-                    </vm:ChordsDiagramViewModel>
-                </views:ChordsDiagramView.DataContext>
-            </views:ChordsDiagramView>
-        </sukiUi:GlassCard>
-    </WrapPanel>
 </UserControl>
