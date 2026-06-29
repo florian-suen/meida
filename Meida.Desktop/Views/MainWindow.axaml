@@ -19,12 +19,16 @@
     TransparencyBackgroundFallback="{DynamicResource SukiBackgroundSolid}"
     BorderBrush="#6DFF18"
     WindowStartupLocation="CenterScreen">
+    <sukiUi:SukiWindow.Hosts>
+        <sukiUi:SukiDialogHost Manager="{Binding DialogManager}" />
+    </sukiUi:SukiWindow.Hosts>
     <Border BorderThickness="0,1,0,0" BorderBrush="#382738" Padding="0,10,0,0">
         <Grid RowDefinitions="50,*">
             <StackPanel Grid.Row="0" Spacing="5" Orientation="Horizontal" HorizontalAlignment="Right"
                         Margin="0,0,16,10"
                         VerticalAlignment="Center">
-                <Button Padding="15" BorderThickness="0" Cursor="Hand" Background="Transparent">
+                <Button Command="{Binding OpenMetronomeCommand}" Padding="15" BorderThickness="0" Cursor="Hand"
+                        Background="Transparent">
                     <Svg Path="/Assets/metronome.svg" Width="20" Height="20" HorizontalAlignment="Center" />
                 </Button>
                 <Separator Height="20" Width="1" />

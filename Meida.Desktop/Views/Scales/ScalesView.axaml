@@ -3,36 +3,57 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             xmlns:view="using:Meida.Desktop.Views.Scales"
+             xmlns:vm="using:Meida.Desktop.ViewModels"
              xmlns:sukiUi="clr-namespace:SukiUI.Controls;assembly=SukiUI"
+             x:DataType="vm:ScalesViewModel"
              x:Class="Meida.Desktop.Views.ScalesView">
-    <ScrollViewer HorizontalAlignment="Center" Margin="0,0,0,20">
-        <StackPanel>
-            <TextBlock Margin="0,0,38,30" Text="Scales"
-                       FontSize="34"
-                       FontWeight="Bold"
-                       HorizontalAlignment="Center" />
-            <sukiUi:GlassCard>
-                <Grid Width="180" Height="150">
-                    <Line StartPoint="20,20" EndPoint="171,20" Stroke="Gray"
-                          StrokeThickness="2" />
-                    <Line StartPoint="20,46" EndPoint="171,46" Stroke="Gray"
-                          StrokeThickness="2" />
-                    <Line StartPoint="20,72" EndPoint="171,72" Stroke="Gray"
-                          StrokeThickness="2" />
-                    <Line StartPoint="20,98" EndPoint="171,98" Stroke="Gray"
-                          StrokeThickness="2" />
-                    <Line StartPoint="20,124" EndPoint="171,124" Stroke="Gray"
-                          StrokeThickness="2" />
-                    <Line StartPoint="20,150" EndPoint="171,150" Stroke="Gray"
-                          StrokeThickness="2" />
-                    <Line StartPoint="20,19.5" EndPoint="20,150.4" Stroke="Black" StrokeThickness="2" />
-                    <Line StartPoint="50,21" EndPoint="50,149" Stroke="Black" StrokeThickness="2" />
-                    <Line StartPoint="80,21" EndPoint="80,149" Stroke="Black" StrokeThickness="2" />
-                    <Line StartPoint="110,21" EndPoint="110,149" Stroke="Black" StrokeThickness="2" />
-                    <Line StartPoint="140,21" EndPoint="140,149" Stroke="Black" StrokeThickness="2" />
-                    <Line StartPoint="170,21" EndPoint="170,149" Stroke="Black" StrokeThickness="2" />
-                </Grid>
-            </sukiUi:GlassCard>
+
+
+    <Grid RowDefinitions="Auto, Auto, *">
+
+
+        <TextBlock Margin="0,0,38,10" Text="Scales"
+                   FontSize="34"
+                   FontWeight="Bold"
+                   HorizontalAlignment="Center" />
+
+
+        <StackPanel Spacing="5" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="70,10,0,0" Grid.Row="1"
+                    Orientation="Horizontal">
+            <TextBlock VerticalAlignment="Center" Text="Key:"
+                       FontSize="14" />
+            <ComboBox VerticalAlignment="Center" Width="150"
+                      ItemsSource="{Binding ScaleKey }"
+                      SelectedItem="{Binding SelectedKey}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding  Key}" />
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
         </StackPanel>
-    </ScrollViewer>
+        <ScrollViewer Grid.Row="2" HorizontalAlignment="Center" Margin="0,0,0,0">
+            <ItemsControl
+                ItemsSource="{Binding MajPentatonic }">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+
+                        <WrapPanel ItemSpacing="20" LineSpacing="20" Margin="30,10"
+                                   HorizontalAlignment="Center" />
+
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <sukiUi:GlassCard IsInteractive="True" Margin="10">
+                            <view:ScalesDiagramView ClipToBounds="False" />
+                        </sukiUi:GlassCard>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
+    </Grid>
+
+
 </UserControl>

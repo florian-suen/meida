@@ -17,6 +17,9 @@
         <entry key="Meida.Desktop/Views/Home.axaml" value="Meida.Desktop/Meida.Desktop.csproj" />
         <entry key="Meida.Desktop/Views/HomeView.axaml" value="Meida.Desktop/Meida.Desktop.csproj" />
         <entry key="Meida.Desktop/Views/MainWindow.axaml" value="Meida.Desktop/Meida.Desktop.csproj" />
+        <entry key="Meida.Desktop/Views/Metronome.axaml" value="Meida.Desktop/Meida.Desktop.csproj" />
+        <entry key="Meida.Desktop/Views/MetronomeView.axaml" value="Meida.Desktop/Meida.Desktop.csproj" />
+        <entry key="Meida.Desktop/Views/Scales/ScalesDiagramView.axaml" value="Meida.Desktop/Meida.Desktop.csproj" />
         <entry key="Meida.Desktop/Views/Scales/ScalesView.axaml" value="Meida.Desktop/Meida.Desktop.csproj" />
         <entry key="Meida.Desktop/Views/ScalesView.axaml" value="Meida.Desktop/Meida.Desktop.csproj" />
         <entry key="Meida.Desktop/Views/Settings.axaml" value="Meida.Desktop/Meida.Desktop.csproj" />

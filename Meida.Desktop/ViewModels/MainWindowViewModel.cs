@@ -10,6 +10,7 @@ using Material.Icons.Avalonia;
 using Meida.Desktop.Views;
 using Meida.Desktop.Views.Chords;
 using SukiUI.Controls;
+using SukiUI.Dialogs;
 
 namespace Meida.Desktop.ViewModels;
 
@@ -20,6 +21,7 @@ public class MainWindowViewModel : ViewModelBase
 
     public MainWindowViewModel()
     {
+        OpenMetronomeCommand = new RelayCommand(ExecuteOpenMetronome);
         NavigateCommand = new RelayCommand(parameter =>
         {
             if (parameter is string targetHeader)
@@ -34,6 +36,9 @@ public class MainWindowViewModel : ViewModelBase
             }
         });
     }
+
+    public ISukiDialogManager DialogManager { get; } = new SukiDialogManager();
+    public ICommand OpenMetronomeCommand { get; }
 
     public ObservableCollection<SukiSideMenuItem> MenuItems { get; set; } =
     [
@@ -68,7 +73,7 @@ public class MainWindowViewModel : ViewModelBase
                 Width = 24,
                 Height = 24,
             },
-            PageContent = new ScalesView(),
+            PageContent = new ScalesView { DataContext = new ScalesViewModel() },
         },
         new()
         {
@@ -106,6 +111,18 @@ public class MainWindowViewModel : ViewModelBase
     ];
 
     public ICommand NavigateCommand { get; }
+
+    private void ExecuteOpenMetronome(object obj)
+    {
+        DialogManager
+            .CreateDialog()
+            .WithTitle("Metronome")
+            .WithContent(new MetronomeView())
+            .WithViewModel(dialog => new MetronomeViewModel(dialog))
+            .Dismiss()
+            .ByClickingBackground()
+            .TryShow();
+    }
 
     public event PropertyChangedEventHandler? PropertyChanged;
 

@@ -7,12 +7,9 @@
              xmlns:materialIcons="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
              x:Class="Meida.Desktop.Views.Chords.ChordsDiagramView"
              x:DataType="vm:ChordsDiagramViewModel">
-
-
     <StackPanel>
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal"
                     Spacing="10">
-
             <TextBlock VerticalAlignment="Center" TextAlignment="Center" Text="{Binding ChordName}"
                        FontSize="16"
                        FontWeight="Bold"
@@ -24,13 +21,11 @@
             </Button>
         </StackPanel>
         <Panel HorizontalAlignment="Center">
-
             <TextBlock
                 Margin="-16,25,0,0"
                 Text="{Binding BaseFretLabel}"
                 FontSize="10" FontWeight="Bold"
                 Foreground="White" />
-
             <Grid Width="120" Height="120">
                 <Line StartPoint="10,20" EndPoint="10,120" Stroke="{DynamicResource ThemeForegroundBrush}"
                       StrokeThickness="2" />
@@ -54,17 +49,14 @@
                       StrokeThickness="1" />
                 <Line StartPoint="10,120" EndPoint="110,120" Stroke="{DynamicResource ThemeBorderLowBrush}"
                       StrokeThickness="1" />
-
                 <ItemsControl ItemsSource="{Binding Fingers}">
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>
-                            <Grid />
+                            <Panel />
                         </ItemsPanelTemplate>
                     </ItemsControl.ItemsPanel>
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-
-
                             <Grid Width="16" Height="16"
                                   HorizontalAlignment="Left" VerticalAlignment="Top"
                                   Margin="{Binding PositionMargin}">
