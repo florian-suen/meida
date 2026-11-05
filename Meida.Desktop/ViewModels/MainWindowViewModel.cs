@@ -7,6 +7,7 @@ using System.Runtime.CompilerServices;
 using System.Windows.Input;
 using Material.Icons;
 using Material.Icons.Avalonia;
+using Meida.Desktop.Services;
 using Meida.Desktop.Views;
 using Meida.Desktop.Views.Chords;
 using SukiUI.Controls;
@@ -112,13 +113,15 @@ public class MainWindowViewModel : ViewModelBase
 
     public ICommand NavigateCommand { get; }
 
+
+    public MetronomeService MetronomeService { get; } = new();
     private void ExecuteOpenMetronome(object obj)
     {
         DialogManager
             .CreateDialog()
             .WithTitle("Metronome")
             .WithContent(new MetronomeView())
-            .WithViewModel(dialog => new MetronomeViewModel(dialog))
+            .WithViewModel(dialog => new MetronomeViewModel(dialog, MetronomeService))
             .Dismiss()
             .ByClickingBackground()
             .TryShow();

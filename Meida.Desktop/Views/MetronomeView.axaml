@@ -1,9 +1,127 @@
 ﻿<UserControl xmlns="https://github.com/avaloniaui"
+             
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:materialIcons="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             xmlns:vm="using:Meida.Desktop.ViewModels"
+             x:DataType="vm:MetronomeViewModel"
+             xmlns:service="using:Meida.Desktop.Services"
+        
+             
              x:Class="Meida.Desktop.Views.MetronomeView">
+    <UserControl.Styles>
+        <Style Selector="Ellipse.beat-light">
+            <Setter Property="Fill" Value="DarkGray" />
+            <Setter Property="Opacity" Value="0.2" />
+            <Setter Property="Width" Value="30" />
+            <Setter Property="Height" Value="30" />
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="Transitions">
+                <Transitions>
+                    <BrushTransition Property="Fill" Duration="0:0:0.05" />
+                </Transitions>
+            </Setter>
+        </Style>
 
-    <TextBlock Text="Metronome" />
+        <Style Selector="Ellipse.beat-light.playing.active">
+            <Setter Property="Opacity" Value="0.8" />
+            <Setter Property="Fill" Value="#9377C9" />
+        </Style>
+
+        <Style Selector="Ellipse.beat-light.active.playing.accent">
+            <Setter Property="Fill" Value="#2799CB" />
+        </Style>
+    </UserControl.Styles>
+    <StackPanel HorizontalAlignment="Stretch" Spacing="12">
+        <Grid ColumnDefinitions="Auto,*" VerticalAlignment="Center">
+            <TextBlock Grid.Column="0" HorizontalAlignment="Center" FontSize="17" Text="Metronome" Margin="15,11,0,0" />
+            <StackPanel HorizontalAlignment="Right" Orientation="Horizontal" Spacing="10" Grid.Column="1">
+                <ToggleButton BorderThickness="1" Padding="2" MaxHeight="28" Width="58"
+                              HorizontalAlignment="Right"
+                              IsChecked="{Binding Accent}"
+                              FontSize="10"
+                              Content="Accent" />
+
+                <ComboBox VerticalAlignment="Center" Width="150"
+                          ItemsSource="{Binding Timing }"
+                          SelectedItem="{Binding SelectedTiming}">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate x:DataType="service:TimingOption">
+                            <StackPanel Spacing="7" VerticalAlignment="Center"
+                                        Orientation="Horizontal">
+                                <TextBlock VerticalAlignment="Center" TextAlignment="Center" FontSize="12"
+                                           Text="{Binding Time}" />
+                                <TextBlock VerticalAlignment="Center" TextAlignment="Center" FontSize="10"
+                                           Text="{Binding Name}" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+
+
+                </ComboBox>
+            </StackPanel>
+        </Grid>
+
+        <StackPanel Spacing="5" HorizontalAlignment="Stretch" VerticalAlignment="Center">
+
+
+            <ItemsControl ItemsSource="{Binding Beats}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel
+                            Height="60"
+                            Orientation="Horizontal"
+                            Spacing="10"
+                            HorizontalAlignment="Center" />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate x:DataType="vm:BeatItem">
+                        <Ellipse Classes="beat-light"
+                                 Classes.playing="{Binding $parent[ItemsControl].((vm:MetronomeViewModel)DataContext).IsPlaying}"
+                                 Classes.active="{Binding IsActive}"
+                                 Classes.accent="{Binding IsAccent}"
+                                 IsVisible="{Binding IsVisible}" />
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+
+
+            <TextBlock FontSize="24" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Run Text="{Binding Bpm}" />
+                <Run Text=" BPM" FontSize="10" />
+            </TextBlock>
+
+            <!-- Modified Layout: Grid replaces StackPanel for precise middle/right alignment -->
+            <Grid ColumnDefinitions="60,*,60">
+                <Slider Grid.Column="1"
+                        IsSnapToTickEnabled="True"
+                        Maximum="280"
+                        Minimum="20"
+                        TickFrequency="1"
+                        Value="{Binding Bpm}"
+                        VerticalAlignment="Center"
+                        Margin="0,0,12,0" />
+
+                <Button CommandParameter="{Binding Accent}" Command="{Binding TogglePlayCommand}" Grid.Column="2"
+                        Padding="0"
+                        CornerRadius="20"
+                        Background="#A83A5C"
+                        BorderBrush="#7C303F"
+                        BorderThickness="1"
+                        Width="35"
+                        Height="35"
+                        Cursor="Hand"
+                        VerticalAlignment="Center">
+                    <materialIcons:MaterialIcon Kind="{Binding PlayIconKind}" />
+
+
+                </Button>
+            </Grid>
+
+        </StackPanel>
+    </StackPanel>
 </UserControl>
