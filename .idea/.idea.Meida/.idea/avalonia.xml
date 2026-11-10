@@ -14,10 +14,12 @@
         <entry key="Meida.Desktop/Views/ChordsDiagramView.axaml" value="Meida.Desktop/Meida.Desktop.csproj" />
         <entry key="Meida.Desktop/Views/ChordsView.axaml" value="Meida.Desktop/Meida.Desktop.csproj" />
         <entry key="Meida.Desktop/Views/ChordsWindow.axaml" value="Meida.Desktop/Meida.Desktop.csproj" />
+        <entry key="Meida.Desktop/Views/HeaderMetronomeBeats.axaml" value="Meida.Desktop/Meida.Desktop.csproj" />
         <entry key="Meida.Desktop/Views/Home.axaml" value="Meida.Desktop/Meida.Desktop.csproj" />
         <entry key="Meida.Desktop/Views/HomeView.axaml" value="Meida.Desktop/Meida.Desktop.csproj" />
         <entry key="Meida.Desktop/Views/MainWindow.axaml" value="Meida.Desktop/Meida.Desktop.csproj" />
         <entry key="Meida.Desktop/Views/Metronome.axaml" value="Meida.Desktop/Meida.Desktop.csproj" />
+        <entry key="Meida.Desktop/Views/MetronomeBeatsView.axaml" value="Meida.Desktop/Meida.Desktop.csproj" />
         <entry key="Meida.Desktop/Views/MetronomeView.axaml" value="Meida.Desktop/Meida.Desktop.csproj" />
         <entry key="Meida.Desktop/Views/Scales/ScalesDiagramView.axaml" value="Meida.Desktop/Meida.Desktop.csproj" />
         <entry key="Meida.Desktop/Views/Scales/ScalesView.axaml" value="Meida.Desktop/Meida.Desktop.csproj" />

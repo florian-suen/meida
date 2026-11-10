@@ -12,6 +12,7 @@
     xmlns:vm="using:Meida.Desktop.ViewModels"
     x:DataType="vm:MainWindowViewModel"
     x:Class="Meida.Desktop.Views.MainWindow"
+    xmlns:views="using:Meida.Desktop.Views"
     Title="Meida"
     Width="1024" Height="768"
     WindowDecorations="None"
@@ -19,6 +20,31 @@
     TransparencyBackgroundFallback="{DynamicResource SukiBackgroundSolid}"
     BorderBrush="#6DFF18"
     WindowStartupLocation="CenterScreen">
+
+    <sukiUi:SukiWindow.Styles>
+
+        <Style Selector="Ellipse.header-beat">
+            <Setter Property="Fill" Value="#555555" />
+            <Setter Property="Opacity" Value="0.4" />
+            <Setter Property="Width" Value="12" />
+            <Setter Property="Height" Value="12" />
+            <Setter Property="HorizontalAlignment" Value="Center" />
+        </Style>
+        <Style Selector="Ellipse.header-beat.active">
+            <Setter Property="Opacity" Value="1.0" />
+            <Setter Property="Fill" Value="#9377C9" />
+        </Style>
+        <Style Selector="Ellipse.header-beat.active.accent">
+            <Setter Property="Fill" Value="#2799CB" />
+        </Style>
+        <Style Selector="Ellipse.header-beat.playing">
+            <Setter Property="Opacity" Value="0.8" />
+        </Style>
+
+
+    </sukiUi:SukiWindow.Styles>
+    
+    
     <sukiUi:SukiWindow.Hosts>
         <sukiUi:SukiDialogHost Manager="{Binding DialogManager}" />
     </sukiUi:SukiWindow.Hosts>
@@ -27,6 +53,9 @@
             <StackPanel Grid.Row="0" Spacing="5" Orientation="Horizontal" HorizontalAlignment="Right"
                         Margin="0,0,16,10"
                         VerticalAlignment="Center">
+
+                <views:HeaderMetronomeBeatsView DataContext="{Binding Metronome}"
+                                            IsVisible="{Binding $parent[Window].((vm:MainWindowViewModel)DataContext).ShowHeaderBeats}" />
                 <Button Command="{Binding OpenMetronomeCommand}" Padding="15" BorderThickness="0" Cursor="Hand"
                         Background="Transparent">
                     <Svg Path="/Assets/metronome.svg" Width="20" Height="20" HorizontalAlignment="Center" />

@@ -4,7 +4,6 @@ using Avalonia.Threading;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Meida.Desktop.Services;
-using SukiUI.Dialogs;
 
 namespace Meida.Desktop.ViewModels;
 
@@ -32,7 +31,7 @@ public partial class MetronomeViewModel : ViewModelBase
     public int[] BeatIndices => Enumerable.Range(0, _service.BeatsPerMeasure).ToArray();
     public BeatItem[] Beats { get; } = Enumerable.Range(0, 6).Select(i => new BeatItem(i)).ToArray();
 
-    public MetronomeViewModel(ISukiDialog dialog, MetronomeService service)
+    public MetronomeViewModel(MetronomeService service)
     {
         Timing = service.Timing;
         _service = service;
@@ -63,7 +62,12 @@ public partial class MetronomeViewModel : ViewModelBase
 
         if (e.PropertyName == nameof(MetronomeService.BeatsPerMeasure) ||
             e.PropertyName == nameof(MetronomeService.Accent))
-            Dispatcher.UIThread.Post(() => { UpdateBeatsVisuals(_lastBeatIndex); });
+            Dispatcher.UIThread.Post(() =>
+            {
+                var beatToShow = _service.IsPlaying ? _lastBeatIndex : 0;
+                UpdateBeatsVisuals(beatToShow);
+            });
+        
 
 
         if (e.PropertyName == nameof(MetronomeService.CurrentBeat)) OnPropertyChanged(nameof(BeatIndices));
@@ -90,6 +94,7 @@ public partial class MetronomeViewModel : ViewModelBase
         {
             _service.SelectedTiming = value;
             OnPropertyChanged();
+            _service.UpdateBeatsPerMeasure();
         }
     }
 
@@ -111,6 +116,7 @@ public partial class MetronomeViewModel : ViewModelBase
         {
             _service.Bpm = value;
             OnPropertyChanged();
+            
         }
     }
 

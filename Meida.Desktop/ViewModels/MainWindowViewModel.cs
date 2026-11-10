@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
+using CommunityToolkit.Mvvm.ComponentModel;
 using Material.Icons;
 using Material.Icons.Avalonia;
 using Meida.Desktop.Services;
@@ -15,26 +16,22 @@ using SukiUI.Dialogs;
 
 namespace Meida.Desktop.ViewModels;
 
-public class MainWindowViewModel : ViewModelBase
+public partial class MainWindowViewModel : ViewModelBase
 {
-    private bool _option1Enabled;
-    private double _option2Value = 50;
+    public MetronomeViewModel Metronome { get; }
 
     public MainWindowViewModel()
     {
+        Metronome = new MetronomeViewModel(new MetronomeService()); 
         OpenMetronomeCommand = new RelayCommand(ExecuteOpenMetronome);
         NavigateCommand = new RelayCommand(parameter =>
         {
-            if (parameter is string targetHeader)
-            {
-                var currentItem = MenuItems.FirstOrDefault(m => m.IsSelected);
-                if (currentItem != null)
-                    currentItem.IsSelected = false;
+            if (parameter is not string targetHeader) return;
+            var currentItem = MenuItems.FirstOrDefault(m => m.IsSelected);
+            currentItem?.IsSelected = false;
 
-                var targetItem = MenuItems.FirstOrDefault(m => m.Header == targetHeader);
-                if (targetItem != null)
-                    targetItem.IsSelected = true;
-            }
+            var targetItem = MenuItems.FirstOrDefault(m => (string)m.Header! == targetHeader);
+            targetItem?.IsSelected = true;
         });
     }
 
@@ -112,19 +109,26 @@ public class MainWindowViewModel : ViewModelBase
     ];
 
     public ICommand NavigateCommand { get; }
-
+    [ObservableProperty] private bool _showHeaderBeats = true;
 
     public MetronomeService MetronomeService { get; } = new();
-    private void ExecuteOpenMetronome(object obj)
+
+    private async void ExecuteOpenMetronome(object obj)
     {
-        DialogManager
+        ShowHeaderBeats = false;
+
+        await DialogManager
             .CreateDialog()
             .WithTitle("Metronome")
             .WithContent(new MetronomeView())
-            .WithViewModel(dialog => new MetronomeViewModel(dialog, MetronomeService))
+            .WithViewModel(dialog => Metronome)
             .Dismiss()
             .ByClickingBackground()
-            .TryShow();
+            .TryShowAsync();
+
+
+        ShowHeaderBeats = true; 
+        
     }
 
     public event PropertyChangedEventHandler? PropertyChanged;

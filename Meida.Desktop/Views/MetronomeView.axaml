@@ -38,11 +38,13 @@
         <Grid ColumnDefinitions="Auto,*" VerticalAlignment="Center">
             <TextBlock Grid.Column="0" HorizontalAlignment="Center" FontSize="17" Text="Metronome" Margin="15,11,0,0" />
             <StackPanel HorizontalAlignment="Right" Orientation="Horizontal" Spacing="10" Grid.Column="1">
-                <ToggleButton BorderThickness="1" Padding="2" MaxHeight="28" Width="58"
-                              HorizontalAlignment="Right"
-                              IsChecked="{Binding Accent}"
-                              FontSize="10"
-                              Content="Accent" />
+                <ToggleButton
+
+                    BorderThickness="1" Padding="2" MaxHeight="28" Width="58"
+                    HorizontalAlignment="Right"
+                    IsChecked="{Binding Accent}"
+                    FontSize="10"
+                    Content="Accent" />
 
                 <ComboBox VerticalAlignment="Center" Width="150"
                           ItemsSource="{Binding Timing }"
@@ -95,7 +97,7 @@
                 <Run Text=" BPM" FontSize="10" />
             </TextBlock>
 
-            <!-- Modified Layout: Grid replaces StackPanel for precise middle/right alignment -->
+         
             <Grid ColumnDefinitions="60,*,60">
                 <Slider Grid.Column="1"
                         IsSnapToTickEnabled="True"

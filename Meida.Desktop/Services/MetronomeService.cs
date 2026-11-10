@@ -40,8 +40,6 @@ public partial class MetronomeService : ObservableObject
 
     [ObservableProperty] public partial int Bpm { get; set; } = 120;
 
-    [ObservableProperty] public partial int BeatsPerBar { get; set; } = 4;
-
     [ObservableProperty] public partial int CurrentBeat { get; set; } = 0;
 
     private Timer? _metronomeTimer;
@@ -120,11 +118,7 @@ public partial class MetronomeService : ObservableObject
         lock (_mediaPlayerInstance)
         {
             var mediaToPlay = isAccent && File.Exists(AccentPath) ? _accentMedia : _clickMedia;
-
-
             _mediaPlayerInstance.Stop();
-
-
             _mediaPlayerInstance.Play(mediaToPlay);
         }
     }
@@ -141,7 +135,7 @@ public partial class MetronomeService : ObservableObject
         else StartMetronome();
     }
 
-    private void UpdateBeatsPerMeasure()
+    public void UpdateBeatsPerMeasure()
     {
         if (SelectedTiming != null) BeatsPerMeasure = SelectedTiming.Beats;
     }
