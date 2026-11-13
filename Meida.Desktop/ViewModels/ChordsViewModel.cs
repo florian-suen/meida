@@ -11,10 +11,6 @@ public partial class ChordsViewModel : ViewModelBase
     
     
     [ObservableProperty] private double _topPanelProportion = 0.15;
- 
-
- 
-
     public ChordsViewModel()
     {
         MajChords =
@@ -85,10 +81,6 @@ public partial class ChordsViewModel : ViewModelBase
                 ]
             }
         ];
-
-   
-        
-        
         MinChords =
         [
             new ChordsDiagramViewModel
@@ -161,13 +153,10 @@ public partial class ChordsViewModel : ViewModelBase
                 ]
             }
         ];
-
-
+        
         foreach (var chord in MajChords) chord.SelectChordCommand = SelectChordCommand;
-
         foreach (var chord in MinChords) chord.SelectChordCommand = SelectChordCommand;
-
-
+        
         PlayerVM = new PlayerViewModel();
         PlayerVM.SelectedChordsOrder = SelectedChordsOrder;
         PlayerVM.SelectChordCommand = SelectChordCommand;

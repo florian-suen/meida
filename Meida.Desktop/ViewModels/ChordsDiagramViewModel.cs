@@ -1,25 +1,25 @@
 ﻿using System.Collections.ObjectModel;
-using Avalonia;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 
 namespace Meida.Desktop.ViewModels;
 
-public class FingerPosition : ObservableObject
+public partial class FingerPosition : ObservableObject
 {
-    private const double MarkerSize = 18;
+    [ObservableProperty] private int _fingerNumber;
+    [ObservableProperty] private int _stringNumber;
+    [ObservableProperty] private int _fretNumber;
 
-    public int StringNumber { get; set; }
-    public int FretNumber { get; set; }
-    public int FingerNumber { get; set; }
 
-  
-    public double XPosition => 111 - (StringNumber - 1) * 20;
-    public double YPosition => 33 + (FretNumber - 1) * 25;
+    [ObservableProperty] private double _timelineX;
+    [ObservableProperty] private double _tabY;    
 
+
+   
  
-    public Thickness PositionMargin =>
-        new(XPosition - MarkerSize / 2, YPosition - MarkerSize / 2, 0, 0);
+
+
+   
 }
 
 public partial class ChordsDiagramViewModel : ObservableObject
@@ -37,10 +37,12 @@ public partial class ChordsDiagramViewModel : ObservableObject
     public ObservableCollection<FingerPosition> Fingers { get; set; } = new();
 
     public IRelayCommand<ChordsDiagramViewModel>? SelectChordCommand { get; set; }
-    
-    
-    
-    
+
+
+    [ObservableProperty] private bool _isCurrent;
+
+
+
 }
 
 

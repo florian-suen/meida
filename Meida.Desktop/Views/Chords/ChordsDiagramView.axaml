@@ -58,8 +58,7 @@
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
                             <Grid Width="16" Height="16"
-                                  HorizontalAlignment="Left" VerticalAlignment="Top"
-                                  Margin="{Binding PositionMargin}">
+                                  HorizontalAlignment="Left" VerticalAlignment="Top">
                                 <Ellipse Fill="#6E4F6E" />
                                 <TextBlock Text="{Binding FingerNumber}"
                                            FontSize="10"

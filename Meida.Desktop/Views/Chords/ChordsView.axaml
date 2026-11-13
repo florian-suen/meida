@@ -15,13 +15,13 @@
                        FontWeight="Bold"
                        HorizontalAlignment="Center" />
             <TabControl TabStripPlacement="Right">
-                <TabItem Header="Major">
+                <TabItem Cursor="Hand" Header="Major">
                     <views:MajorView />
                 </TabItem>
-                <TabItem Header="Minor">
+                <TabItem Cursor="Hand" Header="Minor">
                     <views:MinorView />
                 </TabItem>
-                <TabItem Foreground="#3389AB" Margin="48,0,0,0">
+                <TabItem Cursor="Hand" Foreground="#3389AB" Margin="48,0,0,0">
                     <TabItem.Styles>
                         <Style Selector="TabItem:selected">
                             <Setter Property="Foreground" Value="#6366F1" />

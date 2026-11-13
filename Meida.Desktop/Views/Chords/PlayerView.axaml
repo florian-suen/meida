@@ -9,73 +9,110 @@
              xmlns:sortable="clr-namespace:Sortable.Avalonia;assembly=Sortable.Avalonia"
              x:DataType="vm:PlayerViewModel"
              x:Class="Meida.Desktop.Views.Chords.PlayerView">
+    <UserControl.Styles>
+        <Style Selector="sukiUi|GlassCard.current">
+
+            <Setter Property="Background" Value="Aqua" />
+
+        </Style>
+
+
+        <Style Selector="ToggleButton.repeat-btn">
+            <Setter Property="Foreground" Value="Gray" />
+        </Style>
+
+
+        <Style Selector="ToggleButton.repeat-btn:checked">
+            <Setter Property="Foreground" Value="#AD3341" />
+        </Style>
+
+
+    </UserControl.Styles>
+
     <StackPanel HorizontalAlignment="Center" Spacing="20">
-        <ComboBox MaxWidth="200"
+        <!--<ComboBox MaxWidth="200"
                   Margin="20,0,0,0"
                   PlaceholderText="Select a Key"
                   ItemsSource="{Binding BackgroundMusic}"
-                  SelectedItem="{Binding SelectedItem}" />
-        <Grid>
-            <Line StartPoint="0,20" EndPoint="5000,20" Stroke="Gray" StrokeThickness="1" />
-            <Line StartPoint="0,45" EndPoint="5000,45" Stroke="Gray" StrokeThickness="1" />
-            <Line StartPoint="0,70" EndPoint="5000,70" Stroke="Gray" StrokeThickness="1" />
-            <Line StartPoint="0,95" EndPoint="5000,95" Stroke="Gray" StrokeThickness="1" />
-            <Line StartPoint="0,120" EndPoint="5000,120" Stroke="Gray" StrokeThickness="1" />
-            <Line StartPoint="0,145" EndPoint="5000,145" Stroke="Gray" StrokeThickness="1" />
+                  SelectedItem="{Binding SelectedItem}" />-->
 
-            <Line StartPoint="140,20" EndPoint="140,145" Stroke="#4B354B" StrokeThickness="2" />
-            <Line StartPoint="380,20" EndPoint="380,145" Stroke="#4B354B" StrokeThickness="2" />
-            <Line StartPoint="620,20" EndPoint="620,145" Stroke="#4B354B" StrokeThickness="2" />
 
-            <Line StartPoint="550,20" EndPoint="550,145"
-                  Stroke="#AD3341" StrokeThickness="2" IsHitTestVisible="False" />
+        <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled" Height="200">
+            <Grid Width="{Binding BoardWidth}" Height="200">
 
-            <TextBlock Margin="50,36,0,0"> 3</TextBlock>
-            <TextBlock Margin="50,62,0,0"> 3</TextBlock>
-            <TextBlock Margin="50,86,0,0"> 3</TextBlock>
-            <TextBlock Margin="50,111,0,0"> 0</TextBlock>
 
-            <TextBlock Margin="180,36,0,0">0</TextBlock>
-            <TextBlock Margin="180,62,0,0"> 2</TextBlock>
-            <TextBlock Margin="180,86,0,0"> 2</TextBlock>
+                <Canvas>
+                    <Rectangle Canvas.Top="20" Height="1" Fill="Gray" Width="{Binding BoardWidth}" />
+                    <Rectangle Canvas.Top="45" Height="1" Fill="Gray" Width="{Binding BoardWidth}" />
+                    <Rectangle Canvas.Top="70" Height="1" Fill="Gray" Width="{Binding BoardWidth}" />
+                    <Rectangle Canvas.Top="95" Height="1" Fill="Gray" Width="{Binding BoardWidth}" />
+                    <Rectangle Canvas.Top="120" Height="1" Fill="Gray" Width="{Binding BoardWidth}" />
+                    <Rectangle Canvas.Top="145" Height="1" Fill="Gray" Width="{Binding BoardWidth}" />
 
-            <TextBlock Margin="220,36,0,0">0</TextBlock>
-            <TextBlock Margin="220,62,0,0"> 2</TextBlock>
-            <TextBlock Margin="220,86,0,0"> 2</TextBlock>
+                </Canvas>
 
-            <TextBlock Margin="250,36,0,0">5</TextBlock>
-            <TextBlock Margin="300,62,0,0"> 2</TextBlock>
-            <TextBlock Margin="333,86,0,0"> 14</TextBlock>
 
-            <TextBlock Margin="420,36,0,0">0</TextBlock>
-            <TextBlock Margin="420,62,0,0"> 2</TextBlock>
-            <TextBlock Margin="420,86,0,0"> 2</TextBlock>
+                <ItemsControl ItemsSource="{Binding AllTabNotes}">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <Canvas />
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
 
-            <TextBlock Margin="460,36,0,0">0</TextBlock>
-            <TextBlock Margin="460,62,0,0"> 2</TextBlock>
-            <TextBlock Margin="460,86,0,0"> 2</TextBlock>
 
-            <TextBlock Margin="490,36,0,0">5</TextBlock>
-            <TextBlock Margin="540,62,0,0"> 2</TextBlock>
-            <TextBlock Margin="570,86,0,0"> 14</TextBlock>
-        </Grid>
+                        <ItemsControl.ItemContainerTheme>
+                        </ItemsControl.ItemContainerTheme>
 
+
+                        <DataTemplate x:DataType="vm:FingerPosition">
+                            <Grid Canvas.Left="{Binding TimelineX}" Canvas.Top="{Binding TabY}">
+                                <Ellipse Width="24" Height="24" Fill="#AD3341" Stroke="White" StrokeThickness="1" />
+                                <TextBlock Text="{Binding FingerNumber}"
+                                           Foreground="White" FontSize="12" FontWeight="Bold"
+                                           HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Grid>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+
+                <Canvas IsHitTestVisible="False">
+                    <Line Canvas.Left="{Binding PlayheadX}"
+                          StartPoint="0,0" EndPoint="0,200"
+                          Stroke="#AD3341" StrokeThickness="3" />
+                </Canvas>
+
+            </Grid>
+        </ScrollViewer>
+       
+        
+        
         <StackPanel Spacing="10" VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal">
-
-            <Button Padding="0" Margin="0" BorderThickness="0">
+            <Button Cursor="Hand" Padding="0" Margin="0" BorderThickness="0">
                 <materialIcons:MaterialIcon Width="50" Kind="SkipPreviousOutline" />
             </Button>
-            <Button Padding="0" Margin="0" BorderThickness="0">
-                <materialIcons:MaterialIcon Width="60" Kind="PauseCircle" />
+            <Button Command="{Binding PlayCommand}" Cursor="Hand" Padding="0" Margin="0" BorderThickness="0">
+                <materialIcons:MaterialIcon Width="60" Kind="PlayCircle" />
             </Button>
-            <Button Padding="0" Margin="0" BorderThickness="0">
+            <Button Cursor="Hand" Padding="0" Margin="0" BorderThickness="0">
                 <materialIcons:MaterialIcon Width="50" Kind="SkipNextOutline" />
             </Button>
+
+            <ToggleButton Classes="repeat-btn"
+                          IsChecked="{Binding IsRepeating}"
+                          Cursor="Hand"
+                          Padding="0"
+                          Margin="0"
+                          BorderThickness="0"
+                          Background="Transparent">
+                <materialIcons:MaterialIcon Width="20" Kind="Repeat" />
+            </ToggleButton>
         </StackPanel>
-
-
+        
+        
+        
         <ItemsControl
-
+            sortable:Sortable.Mode="Swap"
             sortable:Sortable.Sortable="True"
             sortable:Sortable.UpdateCommand="{Binding UpdateChordOrderCommand}"
             ItemsSource="{Binding SelectedChordsOrder}">
@@ -86,7 +123,7 @@
             </ItemsControl.Styles>
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
-                    <WrapPanel Background="Red" Margin="10,50" ItemSpacing="10" LineSpacing="15"
+                    <WrapPanel Margin="10,50" ItemSpacing="10" LineSpacing="15"
                                HorizontalAlignment="Center" />
 
                 </ItemsPanelTemplate>
@@ -95,9 +132,9 @@
                 <DataTemplate>
                     <Border Cursor="Hand"
                             sortable:Sortable.IsSortable="True">
-                        <StackPanel Background="BlueViolet"
-                                    Orientation="Horizontal" Spacing="10">
-                            <sukiUi:GlassCard>
+                        <StackPanel
+                            Orientation="Horizontal" Spacing="10">
+                            <sukiUi:GlassCard Classes.current="{Binding IsCurrent}">
                                 <StackPanel Spacing="10" HorizontalAlignment="Center" Orientation="Horizontal">
                                     <TextBlock Text="{Binding ChordName}" />
                                     <Button Cursor="Hand" Command="{Binding SelectChordCommand}"

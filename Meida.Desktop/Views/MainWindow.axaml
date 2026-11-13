@@ -79,6 +79,7 @@
                             <TextBlock Text="Meida" FontSize="20" FontWeight="Bold" VerticalAlignment="Center" />
                         </StackPanel>
                     </sukiUi:SukiSideMenu.HeaderContent>
+                    
                     <sukiUi:SukiSideMenu.FooterContent>
                         <TextBlock Text="v1.0.0" Margin="21,0" Opacity="0.5" />
                     </sukiUi:SukiSideMenu.FooterContent>
