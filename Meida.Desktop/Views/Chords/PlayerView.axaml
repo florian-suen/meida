@@ -1,4 +1,4 @@
-﻿<UserControl xmlns="https://github.com/avaloniaui"
+﻿<UserControl ZIndex="9999" xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -6,18 +6,15 @@
              xmlns:materialIcons="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
              xmlns:sukiUi="clr-namespace:SukiUI.Controls;assembly=SukiUI"
              xmlns:vm="using:Meida.Desktop.ViewModels"
+             xmlns:sortable="clr-namespace:Sortable.Avalonia;assembly=Sortable.Avalonia"
              x:DataType="vm:PlayerViewModel"
              x:Class="Meida.Desktop.Views.Chords.PlayerView">
     <StackPanel HorizontalAlignment="Center" Spacing="20">
-
-
         <ComboBox MaxWidth="200"
                   Margin="20,0,0,0"
                   PlaceholderText="Select a Key"
                   ItemsSource="{Binding BackgroundMusic}"
                   SelectedItem="{Binding SelectedItem}" />
-
-
         <Grid>
             <Line StartPoint="0,20" EndPoint="5000,20" Stroke="Gray" StrokeThickness="1" />
             <Line StartPoint="0,45" EndPoint="5000,45" Stroke="Gray" StrokeThickness="1" />
@@ -76,61 +73,45 @@
             </Button>
         </StackPanel>
 
-        <WrapPanel Margin="10,50" ItemSpacing="10" LineSpacing="15" HorizontalAlignment="Center">
-            <sukiUi:GlassCard>
-                <StackPanel Spacing="10" HorizontalAlignment="Center" Orientation="Horizontal">
-                    <TextBlock>C Chord</TextBlock>
-                    <Button Padding="0" Foreground="White" Classes="Basic">
-                        <materialIcons:MaterialIcon Kind="CancelCircle" />
-                    </Button>
-                </StackPanel>
-            </sukiUi:GlassCard>
-            <materialIcons:MaterialIcon Kind="ChevronRight" />
-            <sukiUi:GlassCard>
-                <StackPanel Spacing="10" HorizontalAlignment="Center" Orientation="Horizontal">
-                    <TextBlock>G Chord</TextBlock>
-                    <Button Padding="0" Foreground="White" Classes="Basic">
-                        <materialIcons:MaterialIcon Kind="CancelCircle" />
-                    </Button>
-                </StackPanel>
-            </sukiUi:GlassCard>
-            <materialIcons:MaterialIcon Kind="ChevronRight" />
-            <sukiUi:GlassCard>
-                <StackPanel Spacing="10" HorizontalAlignment="Center" Orientation="Horizontal">
-                    <TextBlock>C Chord</TextBlock>
-                    <Button Padding="0" Foreground="White" Classes="Basic">
-                        <materialIcons:MaterialIcon Kind="CancelCircle" />
-                    </Button>
-                </StackPanel>
-            </sukiUi:GlassCard>
-            <materialIcons:MaterialIcon Kind="ChevronRight" />
-            <sukiUi:GlassCard>
-                <StackPanel Spacing="10" HorizontalAlignment="Center" Orientation="Horizontal">
-                    <TextBlock>D Chord</TextBlock>
-                    <Button Padding="0" Foreground="White" Classes="Basic">
-                        <materialIcons:MaterialIcon Kind="CancelCircle" />
-                    </Button>
-                </StackPanel>
-            </sukiUi:GlassCard>
-            <materialIcons:MaterialIcon Kind="ChevronRight" />
-            <sukiUi:GlassCard>
-                <StackPanel Spacing="10" HorizontalAlignment="Center" Orientation="Horizontal">
-                    <TextBlock>F Chord</TextBlock>
-                    <Button Padding="0" Foreground="White" Classes="Basic">
-                        <materialIcons:MaterialIcon Kind="CancelCircle" />
-                    </Button>
-                </StackPanel>
-            </sukiUi:GlassCard>
-            <materialIcons:MaterialIcon Kind="ChevronRight" />
-            <sukiUi:GlassCard>
-                <StackPanel Spacing="10" HorizontalAlignment="Center" Orientation="Horizontal">
-                    <TextBlock>C Chord</TextBlock>
-                    <Button Padding="0" Foreground="White" Classes="Basic">
-                        <materialIcons:MaterialIcon Kind="CancelCircle" />
-                    </Button>
-                </StackPanel>
-            </sukiUi:GlassCard>
-        </WrapPanel>
-    </StackPanel>
 
+        <ItemsControl
+
+            sortable:Sortable.Sortable="True"
+            sortable:Sortable.UpdateCommand="{Binding UpdateChordOrderCommand}"
+            ItemsSource="{Binding SelectedChordsOrder}">
+            <ItemsControl.Styles>
+                <Style Selector="ContentPresenter:nth-last-child(1) materialIcons|MaterialIcon.chevron-separator">
+                    <Setter Property="IsVisible" Value="False" />
+                </Style>
+            </ItemsControl.Styles>
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel Background="Red" Margin="10,50" ItemSpacing="10" LineSpacing="15"
+                               HorizontalAlignment="Center" />
+
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Border Cursor="Hand"
+                            sortable:Sortable.IsSortable="True">
+                        <StackPanel Background="BlueViolet"
+                                    Orientation="Horizontal" Spacing="10">
+                            <sukiUi:GlassCard>
+                                <StackPanel Spacing="10" HorizontalAlignment="Center" Orientation="Horizontal">
+                                    <TextBlock Text="{Binding ChordName}" />
+                                    <Button Cursor="Hand" Command="{Binding SelectChordCommand}"
+                                            CommandParameter="{Binding . }"
+                                            Padding="0" Foreground="White" Classes="Basic">
+                                        <materialIcons:MaterialIcon Kind="CancelCircle" />
+                                    </Button>
+                                </StackPanel>
+                            </sukiUi:GlassCard>
+                            <materialIcons:MaterialIcon Classes="chevron-separator" Kind="ChevronRight" />
+                        </StackPanel>
+                    </Border>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+    </StackPanel>
 </UserControl>

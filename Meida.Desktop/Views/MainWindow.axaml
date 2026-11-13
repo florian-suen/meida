@@ -22,7 +22,6 @@
     WindowStartupLocation="CenterScreen">
 
     <sukiUi:SukiWindow.Styles>
-
         <Style Selector="Ellipse.header-beat">
             <Setter Property="Fill" Value="#555555" />
             <Setter Property="Opacity" Value="0.4" />
@@ -40,11 +39,7 @@
         <Style Selector="Ellipse.header-beat.playing">
             <Setter Property="Opacity" Value="0.8" />
         </Style>
-
-
     </sukiUi:SukiWindow.Styles>
-    
-    
     <sukiUi:SukiWindow.Hosts>
         <sukiUi:SukiDialogHost Manager="{Binding DialogManager}" />
     </sukiUi:SukiWindow.Hosts>
@@ -53,7 +48,6 @@
             <StackPanel Grid.Row="0" Spacing="5" Orientation="Horizontal" HorizontalAlignment="Right"
                         Margin="0,0,16,10"
                         VerticalAlignment="Center">
-
                 <views:HeaderMetronomeBeatsView DataContext="{Binding Metronome}"
                                             IsVisible="{Binding $parent[Window].((vm:MainWindowViewModel)DataContext).ShowHeaderBeats}" />
                 <Button Command="{Binding OpenMetronomeCommand}" Padding="15" BorderThickness="0" Cursor="Hand"
@@ -67,12 +61,12 @@
             </StackPanel>
             <Border Grid.Row="1"
                     CornerRadius="20 ,0,0,20"
-                    ClipToBounds="True"
+                    ClipToBounds="False"
                     BoxShadow="0 4 15 0 #40000000">
                 <sukiUi:SukiSideMenu
                     ItemsSource="{Binding MenuItems, Mode=OneWay}"
                     SidebarToggleEnabled="True"
-                    ClipToBounds="True"
+                    ClipToBounds="False"
                     IsSearchEnabled="True">
                     <sukiUi:SukiSideMenu.ItemTemplate>
                         <DataTemplate>

@@ -4,9 +4,16 @@ using CommunityToolkit.Mvvm.Input;
 
 namespace Meida.Desktop.ViewModels;
 
+ 
+
 public partial class ChordsViewModel : ViewModelBase
 {
+    
+    
     [ObservableProperty] private double _topPanelProportion = 0.15;
+ 
+
+ 
 
     public ChordsViewModel()
     {
@@ -21,6 +28,8 @@ public partial class ChordsViewModel : ViewModelBase
                     new FingerPosition { FingerNumber = 2, StringNumber = 4, FretNumber = 2 },
                     new FingerPosition { FingerNumber = 3, StringNumber = 5, FretNumber = 3 }
                 ]
+
+
             },
             new ChordsDiagramViewModel
             {
@@ -77,7 +86,9 @@ public partial class ChordsViewModel : ViewModelBase
             }
         ];
 
-
+   
+        
+        
         MinChords =
         [
             new ChordsDiagramViewModel
@@ -150,15 +161,38 @@ public partial class ChordsViewModel : ViewModelBase
                 ]
             }
         ];
+
+
+        foreach (var chord in MajChords) chord.SelectChordCommand = SelectChordCommand;
+
+        foreach (var chord in MinChords) chord.SelectChordCommand = SelectChordCommand;
+
+
+        PlayerVM = new PlayerViewModel();
+        PlayerVM.SelectedChordsOrder = SelectedChordsOrder;
+        PlayerVM.SelectChordCommand = SelectChordCommand;
+
+
     }
 
     public ObservableCollection<ChordsDiagramViewModel> MajChords { get; set; }
     public ObservableCollection<ChordsDiagramViewModel> MinChords { get; set; }
     public PlayerViewModel PlayerVM { get; } = new();
 
+    private ObservableCollection<ChordsDiagramViewModel> SelectedChordsOrder { get; } = new();
+    
     [RelayCommand]
-    private void ToggleTopPanel()
+    private void SelectChord(ChordsDiagramViewModel chord)
     {
-        TopPanelProportion = TopPanelProportion >= 0.4 ? 0.15 : 0.5;
+        if (chord.IsSelected)
+            SelectedChordsOrder.Remove(chord);
+        else
+            SelectedChordsOrder.Add(chord);
+
+
+        chord.IsSelected = !chord.IsSelected;
+
+   
     }
+   
 }

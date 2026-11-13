@@ -1,6 +1,7 @@
 ﻿using System.Collections.ObjectModel;
 using Avalonia;
 using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 
 namespace Meida.Desktop.ViewModels;
 
@@ -30,9 +31,16 @@ public partial class ChordsDiagramViewModel : ObservableObject
     [ObservableProperty]
     private string _chordName = "C Major";
 
+    [ObservableProperty] private bool _isSelected;
     public string BaseFretLabel => BaseFret > 1 ? $"{BaseFret}fr" : string.Empty;
 
     public ObservableCollection<FingerPosition> Fingers { get; set; } = new();
+
+    public IRelayCommand<ChordsDiagramViewModel>? SelectChordCommand { get; set; }
+    
+    
+    
+    
 }
 
 

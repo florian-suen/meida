@@ -73,6 +73,10 @@
                 </ItemsControl>
             </Grid>
         </Panel>
-        <ToggleButton Margin="0,20,0,0" Content="{Binding ChordName, StringFormat='{}Add {0}'}" />
+        <ToggleButton Margin="0,20,0,0"
+                      IsChecked="{Binding IsSelected, Mode=OneWay}"
+                      CommandParameter="{Binding}"
+                      Command="{Binding SelectChordCommand}"
+                      Content="{Binding ChordName, StringFormat='{}Add {0}'}" />
     </StackPanel>
 </UserControl>

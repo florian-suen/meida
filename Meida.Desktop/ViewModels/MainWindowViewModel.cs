@@ -49,7 +49,7 @@ public partial class MainWindowViewModel : ViewModelBase
                 Width = 24,
                 Height = 24,
             },
-            PageContent = new HomeView(),
+            PageContent = new HomeView()
         },
         new()
         {

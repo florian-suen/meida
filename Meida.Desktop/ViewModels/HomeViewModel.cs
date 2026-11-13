@@ -1,3 +1,5 @@
 ﻿namespace Meida.Desktop.ViewModels;
 
-public class HomeViewModel : ViewModelBase { }
+public partial class HomeViewModel : ViewModelBase
+{
+}
